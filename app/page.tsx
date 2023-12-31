@@ -9,7 +9,7 @@ export default async function Home() {
   }
 
   return (
-    <ul>
+    <ul className="container mx-auto md:w-2/3">
       {contents.map((post) => {
         return (
           <li key={post.id}>

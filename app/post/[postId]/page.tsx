@@ -22,7 +22,7 @@ export default async function StaticDetailPage({
   const post = await getDetail(postId);
 
   return (
-    <div>
+    <div className=" container mx-auto md:w-2/3 ">
       <h1>{post.title}</h1>
       <div>{parse(post.body)}</div>
     </div>
