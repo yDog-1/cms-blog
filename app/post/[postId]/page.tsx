@@ -1,5 +1,4 @@
 import { getDetail, getList } from "@/libs/microcms";
-import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 
 export async function generateStaticParams() {
