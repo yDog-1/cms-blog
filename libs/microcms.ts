@@ -27,8 +27,9 @@ export const client = createClient({
 export const getList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Blog>({
     customRequestInit: {
+      // 開発時はコメントアウトしたらテストが楽
       // データ取得後、１時間はキャッシュが表示される。(ISR)
-      next: { revalidate: 3600 },
+      // next: { revalidate: 3600 },
     },
     endpoint: "blog",
     queries,
