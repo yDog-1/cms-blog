@@ -25,16 +25,32 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Blog>({
-    customRequestInit: {
-      // 開発時はコメントアウトしたらテストが楽
-      // データ取得後、１時間はキャッシュが表示される。(ISR)
-      // next: { revalidate: 3600 },
-    },
-    endpoint: "blog",
-    queries,
-  });
-  return listData;
+  const contents = await client
+    .getList<Blog>({
+      customRequestInit: {
+        // 開発時はコメントアウトしたらテストが楽
+        // データ取得後、１時間はキャッシュが表示される。(ISR)
+        // next: { revalidate: 3600 },
+      },
+      endpoint: "blog",
+      queries,
+    })
+    .then((data) => {
+      return data.contents.map((content) => {
+        const forDisplayPublishedAt = (() => {
+          try {
+            const date = new Date(content.publishedAt!);
+            return `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`;
+          } catch (error) {
+            return;
+          }
+        })();
+        return { ...content, forDisplayPublishedAt: forDisplayPublishedAt };
+      });
+    });
+  console.log(contents);
+
+  return contents;
 };
 
 // ブログの詳細を取得
