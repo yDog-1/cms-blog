@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <>
       <footer className=" bg-red-600 py-3">
-        <div className=" container mx-auto bg-red-600 text-black md:w-2/3">
+        <div className=" container mx-auto bg-red-600 text-slate-50 md:w-2/3">
           <div className="mx-3">
             <ul className=" grid grid-cols-7 gap-2 md:grid-cols-5 md:gap-5 ">
               <li className=" col-span-3 my-auto md:col-span-1 ">
@@ -20,7 +20,7 @@ export const Footer = () => {
                   ></Image>
                 </Link>
               </li>
-              <li className=" col-span-4 flex-auto text-gray-50 md:col-span-4 ">
+              <li className=" col-span-4 flex-auto text-slate-50 md:col-span-4 ">
                 <ul className=" grid grid-flow-row grid-cols-1 text-lg">
                   <li className="flex flex-col items-end gap-2">
                     <Link

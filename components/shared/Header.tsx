@@ -8,9 +8,9 @@ export const Header = () => {
   return (
     <header className=" bg-red-600 py-3 sm:pt-10">
       <div className="container mx-auto md:w-2/3 ">
-        <div className="mx-3 flex flex-col text-gray-50 md:flex-row">
+        <div className="mx-3 flex flex-col text-slate-50 md:flex-row">
           <Link href="/" className="flex items-center font-extrabold">
-            <h1 className=" px-3 pb-3 text-4xl text-black md:p-0 md:text-3xl ">
+            <h1 className=" px-3 pb-3 text-4xl text-slate-50 md:p-0 md:text-3xl ">
               yDog Tech Blog
             </h1>
           </Link>
