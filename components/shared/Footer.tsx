@@ -20,18 +20,18 @@ export const Footer = () => {
                   ></Image>
                 </Link>
               </li>
-              <li className=" col-span-4 flex-auto text-gray-light md:col-span-4 ">
+              <li className=" col-span-4 flex-auto text-gray-50 md:col-span-4 ">
                 <ul className=" grid grid-flow-row grid-cols-1 text-lg">
                   <li className="flex flex-col items-end gap-2">
                     <Link
                       href="/about"
-                      className="mx-auto rounded-md px-2 duration-200 md:-mr-2 md:hover:bg-gray-light md:hover:font-bold md:hover:text-red"
+                      className="mx-auto rounded-md px-2 duration-200 md:-mr-2 md:hover:bg-gray-50 md:hover:font-bold md:hover:text-red-500"
                     >
                       About
                     </Link>
                     <Link
                       href="/contact"
-                      className="mx-auto rounded-md px-2 duration-200 md:-mr-2 md:hover:bg-gray-light md:hover:font-bold md:hover:text-red"
+                      className="mx-auto rounded-md px-2 duration-200 md:-mr-2 md:hover:bg-gray-50 md:hover:font-bold md:hover:text-red-500"
                     >
                       Contact
                     </Link>
