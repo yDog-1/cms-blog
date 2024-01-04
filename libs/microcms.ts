@@ -25,32 +25,27 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
-  const contents = await client
-    .getList<Blog>({
-      customRequestInit: {
-        // 開発時はコメントアウトしたらテストが楽
-        // データ取得後、１時間はキャッシュが表示される。(ISR)
-        // next: { revalidate: 3600 },
-      },
-      endpoint: "blog",
-      queries,
-    })
-    .then((data) => {
-      return data.contents.map((content) => {
-        const published = (() => {
-          try {
-            const strDate = new Date(content.publishedAt!).toLocaleString();
-            const [date, time] = strDate.split(" ");
-            return { date: date, time: time };
-          } catch (error) {
-            return { date: "YYYY/MM/DD", time: "HH:MM:SS" };
-          }
-        })();
-        return { ...content, published: published };
+  try {
+    const contents = await client
+      .getList<Blog>({
+        customRequestInit: {
+          // データ取得後、１時間はキャッシュが表示される。(ISR)
+          next: { revalidate: 3600 },
+        },
+        endpoint: "blog",
+        queries,
+      })
+      .then((data) => {
+        return data.contents.map((content) => {
+          return localDate(content);
+        });
       });
-    });
-
-  return contents;
+    return contents;
+  } catch (error) {
+    // ここのエラー処理は考える
+    console.error(error);
+    notFound();
+  }
 };
 
 // ブログの詳細を取得
@@ -59,14 +54,36 @@ export const getDetail = async (
   queries?: MicroCMSQueries
 ) => {
   try {
-    const detailData = await client.getListDetail<Blog>({
-      endpoint: "blog",
-      contentId,
-      queries,
-    });
+    const detailData = await client
+      .getListDetail<Blog>({
+        endpoint: "blog",
+        contentId,
+        queries,
+      })
+      .then((data) => {
+        return localDate(data);
+      });
     return detailData;
   } catch (error) {
     console.error(error);
     notFound();
   }
 };
+
+// UTCを現地時間に変換・published.date|timeに格納
+function localDate<T>(content: MicroCMSDate & Blog & T) {
+  const published = (() => {
+    try {
+      if (!content.publishedAt) {
+        throw `ブログID: ${content.id}\nエラー: 公開日が取得できませんでした。`;
+      }
+      const strDate = new Date(content.publishedAt).toLocaleString();
+      const [date, time] = strDate.split(" ");
+      return { date: date, time: time };
+    } catch (e) {
+      console.error(e);
+      return { date: "YYYY/MM/DD", time: "HH:MM:SS" };
+    }
+  })();
+  return { ...content, published: published };
+}
