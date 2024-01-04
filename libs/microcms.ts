@@ -37,18 +37,18 @@ export const getList = async (queries?: MicroCMSQueries) => {
     })
     .then((data) => {
       return data.contents.map((content) => {
-        const forDisplayPublishedAt = (() => {
+        const published = (() => {
           try {
-            const date = new Date(content.publishedAt!);
-            return `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`;
+            const strDate = new Date(content.publishedAt!).toLocaleString();
+            const [date, time] = strDate.split(" ");
+            return { date: date, time: time };
           } catch (error) {
-            return;
+            return { date: "YYYY/MM/DD", time: "HH:MM:SS" };
           }
         })();
-        return { ...content, forDisplayPublishedAt: forDisplayPublishedAt };
+        return { ...content, published: published };
       });
     });
-  console.log(contents);
 
   return contents;
 };
