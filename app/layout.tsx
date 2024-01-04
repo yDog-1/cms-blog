@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={ZenKakuGothicNew.className}>
+      <body
+        className={`${ZenKakuGothicNew.className} flex min-h-screen flex-col`}
+      >
         <Header />
         {children}
         <Footer />

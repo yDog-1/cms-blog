@@ -16,23 +16,25 @@ export const Header = () => {
           </Link>
           <div className="ml-auto flex md:-mb-1">
             <ul className="mb-2 mt-auto flex items-end space-x-3 md:m-0 md:mb-1">
-              <li className="rounded-md px-2 text-xl duration-200 md:hover:bg-gray-300 md:hover:font-bold md:hover:text-red-500">
+              <li className="px-2 text-lg md:hover:underline">
                 <Link href="/">TOP</Link>
               </li>
-              <li className="p-1">
+              <li className="rounded md:hover:bg-slate-950">
                 <a
                   href="https://x.com/yDog_1"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="block p-1"
                 >
                   <X width={iconSize} height={iconSize} darkMode={darkMode} />
                 </a>
               </li>
-              <li className="p-1">
+              <li className=" rounded md:hover:bg-slate-950">
                 <a
                   href="https://github.com/yDog-1"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="block p-1"
                 >
                   <Github
                     width={iconSize}
