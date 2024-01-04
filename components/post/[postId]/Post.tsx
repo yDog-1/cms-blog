@@ -19,12 +19,11 @@ export default async function Post({ postId }: { postId: string }) {
 
   return (
     <main className={`${styles.main} container mx-auto flex-1 md:w-2/3`}>
-      <h1 className={styles.title}>{post.title}</h1>
-      <div className="flex justify-end">
-        <p>公開日</p>
-        <p className="ml-4">{post.published.date}</p>
+      <div className={styles.post}>
+        <h1 className={styles.title}>{post.title}</h1>
+        <p className={styles.time}>{post.published.date}</p>
+        <div className={styles.postBody}>{parse(post.body)}</div>
       </div>
-      <div className={styles.postBody}>{parse(post.body)}</div>
     </main>
   );
 }
