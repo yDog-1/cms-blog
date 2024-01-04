@@ -1,12 +1,13 @@
 import { getList } from "@/libs/microcms";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { FaArrowCircleRight } from "react-icons/fa";
 
 export default async function PostList() {
   const contents = await getList();
 
   if (!contents || contents.length === 0) {
-    return <h1>No contents</h1>;
+    return notFound();
   }
   return (
     <ul className="my-10 grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -17,15 +18,13 @@ export default async function PostList() {
         >
           <Link
             href={`/post/${post.id}`}
-            className=" group flex flex-auto flex-col text-slate-900"
+            className=" group flex flex-auto flex-col"
           >
-            <h2 className=" my-3 text-2xl font-bold text-slate-900 group-hover:underline">
+            <h2 className=" my-3 text-2xl font-bold group-hover:underline">
               {post.title}
             </h2>
             <div className="mt-auto flex justify-between">
-              <p className=" my-3  text-sm text-slate-900">
-                {post.published.date}
-              </p>
+              <p className=" my-3  text-sm">{post.published.date}</p>
               <FaArrowCircleRight
                 color={"#DC2626"}
                 size={"1.7em"}
