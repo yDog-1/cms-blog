@@ -70,20 +70,22 @@ export const getDetail = async (
   }
 };
 
-// UTCを現地時間に変換・published.date|timeに格納
+// UTCを現地時間に変換・published.dateに格納
 function localDate<T>(content: MicroCMSDate & Blog & T) {
   const published = (() => {
     try {
       if (!content.publishedAt) {
         throw `ブログID: ${content.id}\nエラー: 公開日が取得できませんでした。`;
       }
-      const strDate = new Date(content.publishedAt).toLocaleString();
-      const [date, time] = strDate.split(" ");
-      return { date: date, time: time };
+      const publishedDate = new Date(content.publishedAt);
+      const date = `${publishedDate.getFullYear()}/${
+        publishedDate.getMonth() + 1
+      }/${publishedDate.getDate()}`;
+      return date;
     } catch (e) {
       console.error(e);
-      return { date: "YYYY/MM/DD", time: "HH:MM:SS" };
+      return "YYYY/MM/DD";
     }
   })();
-  return { ...content, published: published };
+  return { ...content, localPublisheAt: published };
 }

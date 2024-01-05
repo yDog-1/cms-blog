@@ -24,7 +24,7 @@ export default async function PostList() {
               {post.title}
             </h2>
             <div className="mt-auto flex justify-between">
-              <p className=" my-3  text-sm">{post.published.date}</p>
+              <p className=" my-3  text-sm">{post.localPublisheAt}</p>
               <FaArrowCircleRight
                 color={"#DC2626"}
                 size={"1.7em"}
