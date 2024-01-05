@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${ZenKakuGothicNew.className} flex min-h-screen flex-col text-slate-900`}
+        className={`${ZenKakuGothicNew.className} flex min-h-screen flex-col`}
       >
         <Header />
         {children}
