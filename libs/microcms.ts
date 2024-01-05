@@ -87,5 +87,5 @@ function localDate<T>(content: MicroCMSDate & Blog & T) {
       return "YYYY/MM/DD";
     }
   })();
-  return { ...content, localPublisheAt: published };
+  return { ...content, localPublishedAt: published };
 }

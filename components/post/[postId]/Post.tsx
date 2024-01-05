@@ -21,7 +21,7 @@ export default async function Post({ postId }: { postId: string }) {
     <main className={`${styles.main}`}>
       <div className={styles.post}>
         <h1 className={styles.title}>{post.title}</h1>
-        <p className={styles.time}>{post.localPublisheAt}</p>
+        <p className={styles.time}>{post.localPublishedAt}</p>
         <div className={styles.postBody}>{parse(post.body)}</div>
       </div>
     </main>
