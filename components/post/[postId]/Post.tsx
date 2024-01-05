@@ -18,7 +18,7 @@ export default async function Post({ postId }: { postId: string }) {
   const post = await getDetail(postId);
 
   return (
-    <main className={`${styles.main} container mx-auto flex-1 md:w-2/3`}>
+    <main className={`${styles.main}`}>
       <div className={styles.post}>
         <h1 className={styles.title}>{post.title}</h1>
         <p className={styles.time}>{post.localPublisheAt}</p>

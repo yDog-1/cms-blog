@@ -7,7 +7,7 @@ export const Header = () => {
   const iconSize = 15;
   return (
     <header className=" bg-red-600 py-3 sm:pt-10">
-      <div className="container mx-auto md:w-2/3 ">
+      <div>
         <div className="mx-3 flex flex-col text-slate-50 md:flex-row">
           <Link href="/" className="flex items-center font-extrabold">
             <h1 className=" px-3 pb-3 text-4xl text-slate-50 md:p-0 md:text-3xl ">

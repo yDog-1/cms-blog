@@ -4,7 +4,7 @@ import Image from "next/image";
 export const Footer = () => {
   return (
     <footer className="bg-red-600 py-3">
-      <div className=" container mx-auto bg-red-600 text-slate-50 md:w-2/3">
+      <div className="bg-red-600 text-slate-50">
         <div className="mx-3">
           <ul className=" grid grid-cols-7 gap-2 md:grid-cols-5 md:gap-5 ">
             <li className=" col-span-3 my-auto md:col-span-1 ">
