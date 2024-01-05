@@ -25,6 +25,17 @@
       font-weight: bold;
       margin: 0 0 1.5rem 0.5rem;
     }
+    ul {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.25rem;
+      li {
+        padding: 0 0.5rem 0.25rem;
+        background-color: #222f5a;
+        color: color.$white-text;
+        border-radius: 0.5rem;
+      }
+    }
   }
 }
 .body {

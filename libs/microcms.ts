@@ -1,13 +1,7 @@
+import { Blog } from "@/types/Blog";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSDate, MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
-
-//ブログの型定義
-export type Blog = {
-  id: string;
-  title: string;
-  body: string;
-} & MicroCMSDate;
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");

@@ -1,6 +1,7 @@
 import { getDetail, getList } from "@/libs/microcms";
 import parse from "html-react-parser";
 import styles from "@/components/post/[postId]/Post.module.scss";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const contents = await getList();
@@ -23,6 +24,15 @@ export default async function Post({ postId }: { postId: string }) {
         <div className={styles.title}>
           <p>{post.localPublishedAt}</p>
           <h1>{post.title}</h1>
+          <ul>
+            {post.tags.map((tag) => {
+              return (
+                <li key={post.id}>
+                  <Link href={`/tag/${tag}`}>{tag}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </span>
       <div className={styles.body}>
