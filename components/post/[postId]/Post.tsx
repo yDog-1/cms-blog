@@ -2,6 +2,7 @@ import { getDetail, getList } from "@/libs/microcms";
 import parse from "html-react-parser";
 import styles from "@/components/post/[postId]/Post.module.scss";
 import Link from "next/link";
+import getTagColor from "@/libs/getTagColor";
 
 export async function generateStaticParams() {
   const contents = await getList();
@@ -27,7 +28,7 @@ export default async function Post({ postId }: { postId: string }) {
           <ul>
             {post.tags.map((tag) => {
               return (
-                <li key={post.id}>
+                <li key={tag} className={getTagColor(tag)}>
                   <Link href={`/tag/${tag}`}>{tag}</Link>
                 </li>
               );
@@ -35,7 +36,7 @@ export default async function Post({ postId }: { postId: string }) {
           </ul>
         </div>
       </span>
-      <div className={styles.body}>
+      <div>
         <div className={styles.post}>{parse(post.body)}</div>
       </div>
     </main>
