@@ -6,7 +6,7 @@ export const Header = () => {
   const darkMode = false;
   const iconSize = 15;
   return (
-    <header className=" bg-red-600 py-3 sm:pt-10">
+    <header className=" bg-red-600 py-3 md:pb-5 md:pt-10">
       <div>
         <div className="mx-3 flex flex-col text-slate-50 md:flex-row">
           <Link href="/" className="flex items-center font-extrabold">

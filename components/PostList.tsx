@@ -12,7 +12,7 @@ export default async function PostList() {
   const otherContents = contents.slice(1);
   return (
     <div>
-      <div className="mt-10 flex rounded-lg bg-slate-50 shadow-lg shadow-slate-300 duration-100 active:shadow-none md:mx-0">
+      <div className="mx-3 mt-10 flex rounded-lg bg-slate-50 shadow-lg shadow-slate-300 duration-100 active:shadow-none md:mx-0">
         <Link
           href={`/post/${firstContent.id}`}
           className="group flex flex-1 flex-col"
@@ -30,7 +30,7 @@ export default async function PostList() {
           </div>
         </Link>
       </div>
-      <ul className="mb-10 mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
+      <ul className="mx-3 mb-10 mt-6 grid grid-cols-1 gap-3 md:mx-0 md:grid-cols-3">
         {otherContents.map((post) => (
           <li
             key={post.id}
