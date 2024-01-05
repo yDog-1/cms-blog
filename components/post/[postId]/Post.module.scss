@@ -1,31 +1,43 @@
-$main-red: #ef4444;
-$white-text: #f8fafc;
-$black-text: #0f172a;
+@use "_scss/global/_default-width-style.scss";
+@use "_scss/global/_default-color.scss" as color;
+
 .main {
-  margin-top: 2.5rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.head {
+  width: 100%;
+  display: block;
+  background-color: #f1f5f9;
+  padding: 4rem 0 3rem;
+  .title {
+    @extend .default-width-style;
+    h1 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      font-weight: 700;
+    }
+    p {
+      color: color.$light-gray;
+      font-family: "Roboto", sans-serif;
+      font-weight: bold;
+      margin: 0 0 1.5rem 0.5rem;
+    }
+  }
+}
+.body {
+  margin: 1rem 0.75rem 5rem;
 }
 .post {
-  @media (min-width: 768px) {
-    margin: 0;
-  }
-  margin: 0 0.75rem 0 0.75rem;
-}
-.title {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
-}
-.time {
-  margin: 1rem 0 2rem 0;
-}
-.postBody {
   font-size: 1rem;
   line-height: 1.5rem;
   & > h1 {
     font-weight: 600;
     font-size: 1.875rem;
     line-height: 2.25rem;
-    border-bottom: 0.15rem solid $main-red;
+    border-bottom: 0.15rem solid color.$main-red;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
   }
@@ -33,28 +45,28 @@ $black-text: #0f172a;
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 2rem;
-    border-bottom: 1px solid $main-red;
+    border-bottom: 1px solid color.$main-red;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
   }
   & > h3 {
     font-size: 1.25rem;
     line-height: 1.75rem;
-    border-bottom: 1px solid $main-red;
+    border-bottom: 1px solid color.$main-red;
     padding-bottom: 0.25rem;
     margin-bottom: 0.5rem;
   }
   & > h4 {
     font-size: 1.125rem;
     line-height: 1.75rem;
-    border-bottom: 1px solid $main-red;
+    border-bottom: 1px solid color.$main-red;
     padding-bottom: 0.125rem;
     margin-bottom: 0.25rem;
   }
   & > h5 {
     font-size: 1rem;
     line-height: 1.5rem;
-    border-bottom: 1px solid $main-red;
+    border-bottom: 1px solid color.$main-red;
     padding-bottom: 0.0625rem;
     margin-bottom: 0.125rem;
   }
@@ -152,7 +164,7 @@ $black-text: #0f172a;
         width: 1.5rem;
         height: calc(1.5rem + 2px);
         text-align: center;
-        color: $white-text;
+        color: color.$white-text;
         border-radius: 0.25rem 0.25rem 0 0.25rem;
       }
       &:nth-child(6n + 1) {

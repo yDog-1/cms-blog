@@ -18,11 +18,15 @@ export default async function Post({ postId }: { postId: string }) {
   const post = await getDetail(postId);
 
   return (
-    <main className={`${styles.main}`}>
-      <div className={styles.post}>
-        <h1 className={styles.title}>{post.title}</h1>
-        <p className={styles.time}>{post.localPublishedAt}</p>
-        <div className={styles.postBody}>{parse(post.body)}</div>
+    <main className={styles.main}>
+      <span className={styles.head}>
+        <div className={styles.title}>
+          <p>{post.localPublishedAt}</p>
+          <h1>{post.title}</h1>
+        </div>
+      </span>
+      <div className={styles.body}>
+        <div className={styles.post}>{parse(post.body)}</div>
       </div>
     </main>
   );
