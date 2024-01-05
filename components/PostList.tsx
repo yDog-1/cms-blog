@@ -14,14 +14,17 @@ export default async function PostList() {
       {contents.map((post) => (
         <li
           key={post.id}
-          className="rounded-lg bg-slate-50   shadow-lg shadow-slate-300 duration-100 active:shadow-none md:mx-0"
+          className="flex rounded-lg bg-slate-50 shadow-lg shadow-slate-300 duration-100 active:shadow-none md:mx-0"
         >
-          <Link href={`/post/${post.id}`} className="group py-1.5">
+          <Link
+            href={`/post/${post.id}`}
+            className="group flex flex-1 flex-col py-1.5"
+          >
             <h2 className="px-5 py-3 text-2xl font-bold group-hover:underline">
               {post.title}
             </h2>
-            <div className="flex justify-between">
-              <p className=" ml-5 py-3 text-sm">{post.localPublisheAt}</p>
+            <div className="mt-auto flex justify-between px-5">
+              <p className="py-3 text-sm">{post.localPublisheAt}</p>
               <FaArrowCircleRight
                 color={"#DC2626"}
                 size={"1.7em"}
