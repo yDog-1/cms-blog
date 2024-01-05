@@ -11,7 +11,7 @@ export default async function PostList() {
   const firstContent = contents[0];
   const otherContents = contents.slice(1);
   return (
-    <>
+    <div>
       <div className="mt-10 flex rounded-lg bg-slate-50 shadow-lg shadow-slate-300 duration-100 active:shadow-none md:mx-0">
         <Link
           href={`/post/${firstContent.id}`}
@@ -55,6 +55,6 @@ export default async function PostList() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
