@@ -193,4 +193,17 @@ $black-text: #0f172a;
       }
     }
   }
+  & > figure {
+    width: fit-content;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    figcaption {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
