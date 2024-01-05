@@ -5,14 +5,15 @@ export type Blog = {
   id: string;
   title: string;
   body: string;
-  tags: (
-    | "Next,js"
-    | "Javascript"
-    | "Typescript"
-    | "microCMS"
-    | "tailwindcss"
-    | "scss"
-    | "Notion"
-    | "その他"
-  )[];
+  tags: Tag[];
 } & MicroCMSDate;
+
+export type Tag =
+  | "Next.js"
+  | "Javascript"
+  | "Typescript"
+  | "microCMS"
+  | "tailwindcss"
+  | "scss"
+  | "Notion"
+  | "その他";
