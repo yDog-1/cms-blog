@@ -253,4 +253,24 @@
       margin-right: auto;
     }
   }
+  // コードブロック
+  & > div.codeBlock {
+    position: relative;
+    & > .dataFileName {
+      position: absolute;
+      // 言語によって色を変えたい
+      background-color: color.$light-gray;
+      color: color.$white-text;
+      display: inline;
+      padding: 0 0.25rem;
+      border-radius: 0.5rem 0;
+    }
+    & > pre.code {
+      border-radius: 0.5rem 1rem 1rem;
+      code {
+        display: block;
+        padding: 2rem 1rem 0.5rem;
+      }
+    }
+  }
 }
