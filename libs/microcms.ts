@@ -23,8 +23,8 @@ export const getList = async (queries?: MicroCMSQueries) => {
     const contents = await client
       .getList<Blog>({
         customRequestInit: {
-          // データ取得後、１時間はキャッシュが表示される。(ISR)
-          next: { revalidate: 3600 },
+          // データ取得後、この秒数分はキャッシュが表示される。(ISR)
+          next: { revalidate: 360 },
         },
         endpoint: "blog",
         queries,
