@@ -1,8 +1,11 @@
 import { getDetail, getList } from "@/libs/microcms";
-import parse from "html-react-parser";
+import parse, { DOMNode, Element, domToReact } from "html-react-parser";
 import styles from "@/components/post/[postId]/Post.module.scss";
 import Link from "next/link";
 import { Tag } from "@/types/Blog";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import Image from "next/image";
 
 function getTagColor(tag: Tag) {
   const lTex = "text-slate-50";
@@ -38,8 +41,71 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
+function parseForNext(rawHtml: string) {
+  return parse(rawHtml, {
+    replace: (domNode) => {
+      // aタグの処理
+      if (domNode instanceof Element && domNode.name === "a") {
+        // 同一ドメインじゃない
+        if (domNode.attribs.href.indexOf("http") !== -1) {
+          return domNode;
+        }
+        // それ以外はLinkタグに置き換える。
+        return (
+          <Link href={domNode.attribs.href}>
+            {domToReact(domNode.children as DOMNode[])}
+          </Link>
+        );
+      }
+      // コードブロックの処理
+      if (domNode instanceof Element && domNode.name === "div") {
+        // コードブロックじゃない
+        if (!("data-filename" in domNode.attribs)) {
+          return domNode;
+        }
+        // コードブロックなら
+        const dataFileName = domNode.attribs["data-filename"];
+        const preElement = domNode.firstChild as Element;
+        const codeElement = (preElement as Element).firstChild as
+          | Text
+          | Element;
+        const code = (codeElement.firstChild as Text).data;
+        const language = (codeElement as Element).attribs.class.replace(
+          "language-",
+          ""
+        );
+        return (
+          <div className={styles.codeBlock}>
+            <div className={styles.dataFileName}>{dataFileName}</div>
+            <SyntaxHighlighter
+              language={language}
+              style={anOldHope}
+              className={styles.code}
+            >
+              {code}
+            </SyntaxHighlighter>
+          </div>
+        );
+      }
+      // 画像の処理
+      if (domNode instanceof Element && domNode.name === "img") {
+        const atr = domNode.attribs;
+        return (
+          <Image
+            src={atr.src}
+            alt={atr.alt}
+            width={Number(atr.width)}
+            height={Number(atr.height)}
+          ></Image>
+        );
+      }
+    },
+  });
+}
+
 export default async function Post({ postId }: { postId: string }) {
   const post = await getDetail(postId);
+  const parsedBody = parseForNext(post.body);
 
   return (
     <main className={styles.main}>
@@ -59,7 +125,7 @@ export default async function Post({ postId }: { postId: string }) {
         </div>
       </span>
       <div>
-        <div className={styles.post}>{parse(post.body)}</div>
+        <div className={styles.post}>{parsedBody}</div>
       </div>
     </main>
   );
