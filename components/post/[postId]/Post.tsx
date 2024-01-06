@@ -29,18 +29,6 @@ function getTagColor(tag: Tag) {
   }
 }
 
-export async function generateStaticParams() {
-  const contents = await getList();
-
-  const paths = contents.map((post) => {
-    return {
-      postId: post.id,
-    };
-  });
-
-  return [...paths];
-}
-
 function parseForNext(rawHtml: string) {
   return parse(rawHtml, {
     replace: (domNode) => {
