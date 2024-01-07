@@ -7,6 +7,18 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Image from "next/image";
 
+export async function generateStaticParams() {
+  const contents = await getList();
+
+  const paths = contents.map((post) => {
+    return {
+      postId: post.id,
+    };
+  });
+
+  return [...paths];
+}
+
 function getTagColor(tag: Tag) {
   const lTex = "text-slate-50";
   switch (tag) {
