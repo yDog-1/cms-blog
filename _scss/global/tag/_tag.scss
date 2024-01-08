@@ -1,4 +1,6 @@
+@forward "_scss/global/color";
 @use "_scss/global/color" as *;
+@forward "_scss/global/tag/tag-color";
 @use "_scss/global/tag/tag-color" as *;
 
 // 背景色に応じて文字色を適用
@@ -8,6 +10,15 @@
     blue($bg-color) * 0.114;
   $text-color: if($bg-brightness > 128, $black-text, $white-text);
   color: $text-color;
+}
+
+@mixin bg-color($map) {
+  @each $key, $value in $map {
+    .#{$key} {
+      background-color: $value;
+      @include text-color($value);
+    }
+  }
 }
 
 $languages: (
@@ -47,10 +58,5 @@ $languages: (
       }
     }
   }
-  @each $key, $value in $languages {
-    .#{$key} {
-      background-color: $value;
-      @include text-color($value);
-    }
-  }
+  @include bg-color($languages);
 }
