@@ -23,7 +23,7 @@ $li-colors: (
   background-color: #f1f5f9;
   padding: 4rem 0 3rem;
   margin-bottom: 2rem;
-  .title {
+  div {
     @extend .default-width-style;
     & > * {
       margin: 0 0.75rem;

@@ -98,7 +98,7 @@ export default async function Post({ postId }: { postId: string }) {
   return (
     <main className={styles.main}>
       <span className={styles.head}>
-        <div className={styles.title}>
+        <div>
           <p>{post.localPublishedAt}</p>
           <h1>{post.title}</h1>
           <ul className={styles.tags}>
