@@ -27,7 +27,7 @@ export default async function Post({ postId }: { postId: string }) {
           <h1>{post.title}</h1>
           <ul className={styles.tags}>
             {post.tags.map((tag) => {
-              return getTagElement(tag);
+              return getTagElement(tag, "li");
             })}
           </ul>
         </div>
