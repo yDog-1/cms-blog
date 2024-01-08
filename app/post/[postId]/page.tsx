@@ -1,6 +1,7 @@
 import Post from "@/components/post/[postId]/Post";
 import { getDetail } from "@/libs/microcms";
 import { Metadata } from "next";
+import styles from "@/components/post/[postId]/Post.module.scss";
 
 // metadataを動的に適用
 export async function generateMetadata({
@@ -31,5 +32,9 @@ export default async function Page({
 }: {
   params: { postId: string };
 }) {
-  return <Post postId={postId} />;
+  return (
+    <main className={styles.main}>
+      <Post postId={postId} />
+    </main>
+  );
 }

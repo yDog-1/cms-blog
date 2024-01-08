@@ -96,7 +96,7 @@ export default async function Post({ postId }: { postId: string }) {
   const parsedBody = parseForNext(post.body);
 
   return (
-    <main className={styles.main}>
+    <>
       <span className={styles.head}>
         <div>
           <p>{post.localPublishedAt}</p>
@@ -111,6 +111,6 @@ export default async function Post({ postId }: { postId: string }) {
       <div>
         <div className={styles.post}>{parsedBody}</div>
       </div>
-    </main>
+    </>
   );
 }
