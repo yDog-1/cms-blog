@@ -1,6 +1,5 @@
 .default-width-style {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: 100%;
   @media (min-width: 640px) {
     max-width: 640px;
