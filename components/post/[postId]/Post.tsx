@@ -19,26 +19,14 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
-function getTagColor(tag: Tag) {
-  const lTex = "text-slate-50";
-  switch (tag) {
-    case "Next.js":
-      return `bg-slate-800 ${lTex}`;
-    case "Javascript":
-      return `bg-yellow-500`;
-    case "Typescript":
-      return `bg-blue-500 ${lTex}`;
-    case "microCMS":
-      return `bg-slate-700 ${lTex}`;
-    case "tailwindcss":
-      return `bg-sky-500 ${lTex}`;
-    case "Notion":
-      return `bg-slate-900 ${lTex}`;
-    case "scss":
-      return `bg-fuchsia-400 ${lTex}`;
-    default:
-      return "background-color:red;";
-  }
+function getTagElement(tag: Tag) {
+  // . があれば - にする
+  const language = tag.includes(".") ? tag.replace(".", "-") : tag;
+  return (
+    <li key={tag} className={styles[language]}>
+      <Link href={`/tag/${language}`}>{tag}</Link>
+    </li>
+  );
 }
 
 function parseForNext(rawHtml: string) {
@@ -113,13 +101,9 @@ export default async function Post({ postId }: { postId: string }) {
         <div className={styles.title}>
           <p>{post.localPublishedAt}</p>
           <h1>{post.title}</h1>
-          <ul>
+          <ul className={styles.tags}>
             {post.tags.map((tag) => {
-              return (
-                <li key={tag} className={getTagColor(tag)}>
-                  <Link href={`/tag/${tag}`}>{tag}</Link>
-                </li>
-              );
+              return getTagElement(tag);
             })}
           </ul>
         </div>

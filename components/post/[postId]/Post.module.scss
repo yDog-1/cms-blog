@@ -1,14 +1,14 @@
 @use "_scss/global/default-width-style";
 @use "_scss/global/color" as *;
-@use "_scss/global/tag-color" as tag;
+@use "_scss/global/tag";
 
 $li-colors: (
-  1: $red-li,
-  2: $orange-li,
-  3: $yellow-li,
-  4: $green-li,
-  5: $cyan-li,
-  6: $indigo-li,
+  "1": $red-li,
+  "2": $orange-li,
+  "3": $yellow-li,
+  "4": $green-li,
+  "5": $cyan-li,
+  "6": $indigo-li,
 );
 
 .main {
@@ -72,6 +72,9 @@ $li-colors: (
         }
       }
     }
+  }
+  ul.tags {
+    @extend .tag;
   }
 }
 .post {
