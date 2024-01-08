@@ -1,5 +1,5 @@
 @use "_scss/global/color" as *;
-@use "_scss/global/tag-color" as *;
+@use "_scss/global/tag/tag-color" as *;
 
 // 背景色に応じて文字色を適用
 // RGBの加重平均による明度の計算式…らしい(Bing Copilot)
