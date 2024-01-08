@@ -1,5 +1,15 @@
-@use "_scss/global/_default-width-style.scss";
-@use "_scss/global/_default-color.scss" as color;
+@use "_scss/global/default-width-style";
+@use "_scss/global/color" as *;
+@use "_scss/global/tag-color" as tag;
+
+$li-colors: (
+  1: $red-li,
+  2: $orange-li,
+  3: $yellow-li,
+  4: $green-li,
+  5: $cyan-li,
+  6: $indigo-li,
+);
 
 .main {
   background-color: #fff;
@@ -20,7 +30,7 @@
     }
     p {
       margin-bottom: 0.5rem;
-      color: color.$light-gray;
+      color: $gray-light;
       font-family: "Roboto", sans-serif;
       font-weight: bold;
     }
@@ -36,7 +46,7 @@
       flex-wrap: wrap;
       li {
         border-radius: 0.5rem;
-        box-shadow: 0px 3px 0 color.$shadow;
+        box-shadow: 0px 3px 0 $gray-lighter;
         transition: 0.3s;
         position: relative;
         &:hover {
@@ -57,7 +67,7 @@
             right: 0;
             top: 0;
             bottom: 0;
-            background-color: rgba(103, 103, 103, 0.2);
+            background-color: #67676733;
           }
         }
       }
@@ -68,58 +78,50 @@
   margin: 1rem 0.75rem 5rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  & > h1 {
+  h1 {
     font-weight: 600;
     font-size: 1.875rem;
     line-height: 2.25rem;
-    border-bottom: 0.15rem solid color.$main-red;
+    border-bottom: 0.15rem solid $red-main;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
   }
-  & > h2 {
+  h2 {
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 2rem;
-    border-bottom: 1px solid color.$main-red;
+    border-bottom: 1px solid $red-main;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
   }
-  & > h3 {
+  h3 {
     font-size: 1.25rem;
     line-height: 1.75rem;
-    border-bottom: 1px solid color.$main-red;
+    border-bottom: 1px solid $red-main;
     padding-bottom: 0.25rem;
     margin-bottom: 0.5rem;
   }
-  & > h4 {
+  h4 {
     font-size: 1.125rem;
     line-height: 1.75rem;
-    border-bottom: 1px solid color.$main-red;
+    border-bottom: 1px solid $red-main;
     padding-bottom: 0.125rem;
     margin-bottom: 0.25rem;
   }
-  & > h5 {
+  h5 {
     font-size: 1rem;
     line-height: 1.5rem;
-    border-bottom: 1px solid color.$main-red;
+    border-bottom: 1px solid $red-main;
     padding-bottom: 0.0625rem;
     margin-bottom: 0.125rem;
   }
-  & > p {
+  p {
     margin: 0.5rem 0;
   }
-  & > ul {
+  ul {
     margin: 0.5rem 0;
     padding: 0.75rem;
-    & > li {
-      $colors: (
-        red: #f87171,
-        orange: #fb923c,
-        yellow: #facc15,
-        green: #4ade80,
-        cyan: #22d3ee,
-        indigo: #818cf8,
-      );
+    li {
       position: relative;
       line-height: 1.5rem;
       margin: 0.5rem 0 0.6rem 1.5rem;
@@ -134,57 +136,21 @@
         height: calc(1.5rem + 2px);
         border-radius: 0.25rem 0.25rem 0 0.25rem;
       }
-      &:nth-child(6n + 1) {
-        border-bottom: 1px solid map-get($map: $colors, $key: red);
-        &::before {
-          background: map-get($map: $colors, $key: red);
-        }
-      }
-      &:nth-child(6n + 2) {
-        border-bottom: 1px solid map-get($map: $colors, $key: orange);
-        &::before {
-          background: map-get($map: $colors, $key: orange);
-        }
-      }
-      &:nth-child(6n + 3) {
-        border-bottom: 1px solid map-get($map: $colors, $key: yellow);
-        &::before {
-          background: map-get($map: $colors, $key: yellow);
-        }
-      }
-      &:nth-child(6n + 4) {
-        border-bottom: 1px solid map-get($map: $colors, $key: green);
-        &::before {
-          background: map-get($map: $colors, $key: green);
-        }
-      }
-      &:nth-child(6n + 5) {
-        border-bottom: 1px solid map-get($map: $colors, $key: cyan);
-        &::before {
-          background: map-get($map: $colors, $key: cyan);
-        }
-      }
-      &:nth-child(6n + 6) {
-        border-bottom: 1px solid map-get($map: $colors, $key: indigo);
-        &::before {
-          background: map-get($map: $colors, $key: indigo);
+      @each $key, $value in $li-colors {
+        &:nth-child(6n + #{$key}) {
+          border-bottom: 1px solid $value;
+          &::before {
+            background: $value;
+          }
         }
       }
     }
   }
-  & > ol {
+  ol {
     counter-reset: list;
     margin: 0.5rem 0;
     padding: 0.75rem;
-    & > li {
-      $colors: (
-        red: #f87171,
-        orange: #fb923c,
-        yellow: #facc15,
-        green: #4ade80,
-        cyan: #22d3ee,
-        indigo: #818cf8,
-      );
+    li {
       position: relative;
       line-height: 1.5rem;
       margin: 0.5rem 0 0.6rem 1.5rem;
@@ -199,48 +165,21 @@
         width: 1.5rem;
         height: calc(1.5rem + 2px);
         text-align: center;
-        color: color.$white-text;
+        color: $white-text;
         border-radius: 0.25rem 0.25rem 0 0.25rem;
       }
-      &:nth-child(6n + 1) {
-        border-bottom: 1px solid map-get($map: $colors, $key: red);
-        &::before {
-          background: map-get($map: $colors, $key: red);
-        }
-      }
-      &:nth-child(6n + 2) {
-        border-bottom: 1px solid map-get($map: $colors, $key: orange);
-        &::before {
-          background: map-get($map: $colors, $key: orange);
-        }
-      }
-      &:nth-child(6n + 3) {
-        border-bottom: 1px solid map-get($map: $colors, $key: yellow);
-        &::before {
-          background: map-get($map: $colors, $key: yellow);
-        }
-      }
-      &:nth-child(6n + 4) {
-        border-bottom: 1px solid map-get($map: $colors, $key: green);
-        &::before {
-          background: map-get($map: $colors, $key: green);
-        }
-      }
-      &:nth-child(6n + 5) {
-        border-bottom: 1px solid map-get($map: $colors, $key: cyan);
-        &::before {
-          background: map-get($map: $colors, $key: cyan);
-        }
-      }
-      &:nth-child(6n + 6) {
-        border-bottom: 1px solid map-get($map: $colors, $key: indigo);
-        &::before {
-          background: map-get($map: $colors, $key: indigo);
+      @each $key, $value in $li-colors {
+        &:nth-child(6n + #{$key}) {
+          border-bottom: 1px solid $value;
+          &::before {
+            background: $value;
+          }
         }
       }
     }
   }
-  & > figure {
+  // 画像
+  figure {
     width: fit-content;
     margin: 1rem 0;
     display: flex;
@@ -253,19 +192,18 @@
       margin-right: auto;
     }
   }
-  // コードブロック
-  & > div.codeBlock {
+  div.codeBlock {
     position: relative;
-    & > .dataFileName {
+    .dataFileName {
       position: absolute;
       // 言語によって色を変えたい
-      background-color: color.$light-gray;
-      color: color.$white-text;
+      background-color: $gray-lighter;
+      color: $white-text;
       display: inline;
       padding: 0 0.25rem;
       border-radius: 0.5rem 0;
     }
-    & > pre.code {
+    pre.code {
       border-radius: 0.5rem 1rem 1rem;
       code {
         display: block;
