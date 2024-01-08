@@ -10,7 +10,10 @@ const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
 });
 
 export const metadata: Metadata = {
-  title: "yDog Tech Blog",
+  title: {
+    template: "%s | yDog Tech Blog",
+    default: "yDog Tech Blog",
+  },
   description: "フロントエンドエンジニアを目指すyDogのブログです。",
 };
 
