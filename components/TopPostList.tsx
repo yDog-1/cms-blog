@@ -6,7 +6,9 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import LiPosts from "./PostList/PostList";
 
-export default async function PostList(props: { queries?: MicroCMSQueries }) {
+export default async function TopPostList(props: {
+  queries?: MicroCMSQueries;
+}) {
   const contents = await getList(props.queries);
   if (!contents || contents.length === 0) {
     return notFound();

@@ -7,7 +7,7 @@ import { MicroCMSQueries } from "microcms-js-sdk";
 import { getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 
-export default async function LiPosts(props: {
+export default async function PostList(props: {
   contents?: Content[];
   queries?: MicroCMSQueries;
 }) {
