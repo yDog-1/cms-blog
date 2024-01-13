@@ -1,9 +1,9 @@
-import PostList from "@/components/TopPostList";
+import TopPostList from "@/components/TopPostList";
 
 export default async function Home() {
   return (
     <main>
-      <PostList />
+      <TopPostList />
     </main>
   );
 }

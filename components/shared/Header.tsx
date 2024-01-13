@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header className=" bg-red-600 py-3 md:pb-5 md:pt-10">
       <div>
-        <div className="mx-3 flex flex-col text-slate-50 md:flex-row">
+        <div className="flex flex-col text-slate-50 md:flex-row">
           <Link href="/" className="flex items-center font-extrabold">
             <h1 className=" px-3 pb-3 text-4xl text-slate-50 md:p-0 md:text-3xl ">
               yDog Tech Blog

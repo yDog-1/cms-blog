@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import styles from "./PostList.module.scss";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import LiPosts from "./PostList/PostList";
+import PostList from "./PostList/PostList";
 
 export default async function TopPostList(props: {
   queries?: MicroCMSQueries;
@@ -19,7 +19,7 @@ export default async function TopPostList(props: {
     <div>
       <div
         className={`${styles.float}
-          mx-3 mt-10 flex rounded-lg bg-slate-50 duration-100 active:bg-slate-200 md:mx-0`}
+          mt-10 flex rounded-lg bg-slate-50 duration-100 active:bg-slate-200`}
       >
         <Link
           href={`/post/${firstContent.id}`}
@@ -38,7 +38,7 @@ export default async function TopPostList(props: {
           </div>
         </Link>
       </div>
-      <LiPosts contents={otherContents} />
+      <PostList contents={otherContents} />
     </div>
   );
 }

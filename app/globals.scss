@@ -10,14 +10,23 @@ body {
   color: $black-text;
   & > header > div {
     @extend .default-width-style;
+    & > * {
+      margin: 0 0.75rem;
+    }
   }
   & > main {
     flex: 1 1 0%;
     & > div {
       @extend .default-width-style;
+      & > * {
+        margin: 0 0.75rem;
+      }
     }
   }
   & > footer > div {
     @extend .default-width-style;
+    & > * {
+      margin: 0 0.75rem;
+    }
   }
 }

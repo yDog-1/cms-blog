@@ -18,7 +18,7 @@ export default async function PostList(props: {
     return notFound();
   }
   return (
-    <ul className="mx-3 mb-10 mt-3 grid grid-cols-1 gap-3 md:mx-0 md:mt-6 md:grid-cols-3">
+    <ul className="mt-3 grid grid-cols-1 gap-3 md:mt-6 md:grid-cols-3">
       {contents.map((post) => (
         <li
           key={post.id}
