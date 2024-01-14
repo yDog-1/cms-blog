@@ -1,10 +1,8 @@
 import { getList } from "@/libs/microcms";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import styles from "./PostList.module.scss";
-import { FaArrowCircleRight } from "react-icons/fa";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import PostList from "./PostList/PostList";
+import TopPost from "./PostList/TopPost";
 
 export default async function TopPostList(props: {
   queries?: MicroCMSQueries;
@@ -17,27 +15,7 @@ export default async function TopPostList(props: {
   const otherContents = contents.slice(1);
   return (
     <div>
-      <div
-        className={`${styles.float}
-          mt-10 flex rounded-lg bg-slate-50 duration-100 active:bg-slate-200`}
-      >
-        <Link
-          href={`/post/${firstContent.id}`}
-          className="group flex flex-1 flex-col"
-        >
-          <h2 className="px-5 pb-10 pt-3 text-2xl font-bold group-hover:underline md:text-5xl">
-            {firstContent.title}
-          </h2>
-          <div className="mt-auto flex justify-between px-5">
-            <p className="py-3 text-sm">{firstContent.localPublishedAt}</p>
-            <FaArrowCircleRight
-              color={"#DC2626"}
-              size={"1.7em"}
-              className="my-auto ml-auto"
-            />
-          </div>
-        </Link>
-      </div>
+      <TopPost firstContent={firstContent} />
       <PostList contents={otherContents} />
     </div>
   );
