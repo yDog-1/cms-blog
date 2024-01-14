@@ -1,5 +1,5 @@
 import { Content } from "@/types/Content";
-import styles from "../PostList.module.scss";
+import styles from "./PostList.module.scss";
 import Link from "next/link";
 import { FaArrowCircleRight } from "react-icons/fa";
 

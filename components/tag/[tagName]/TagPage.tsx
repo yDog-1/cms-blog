@@ -1,6 +1,6 @@
 import { Tag } from "@/types/Blog";
 import style from "@/components/tag/[tagName]/TagPage.module.scss";
-import PostList from "@/components/TopPostList";
+import TopPostList from "@/components/TopPostList";
 
 const fixTag = (tagName: string) => {
   switch (tagName) {
@@ -27,7 +27,7 @@ export default function TagPage({ tagName }: { tagName: Tag }) {
           <p className="mb-3 md:mb-0 md:ml-1 md:mt-8">ページ一覧</p>
         </div>
       </div>
-      <PostList queries={{ filters: `tags[contains]${fixedTagName}` }} />
+      <TopPostList queries={{ filters: `tags[contains]${fixedTagName}` }} />
     </>
   );
 }
