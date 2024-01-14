@@ -52,12 +52,14 @@ export default function ShowMore(props: {
     <>
       <PostList contents={contents} totalCount={totalCount} />
       {visibleButton ? (
-        <button
-          className={`${styles.float} mx-auto mt-3 w-full rounded-lg bg-red-500 p-1 text-lg  font-bold text-slate-50`}
-          onClick={getMoreContents}
-        >
-          もっと見る
-        </button>
+        <div>
+          <button
+            className={`${styles.float} mx-auto mt-3 w-full rounded-lg bg-red-500 p-1 text-lg  font-bold text-slate-50`}
+            onClick={getMoreContents}
+          >
+            もっと見る
+          </button>
+        </div>
       ) : (
         loading && <Loading />
       )}
