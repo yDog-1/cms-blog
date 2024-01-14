@@ -4,7 +4,7 @@ import { getTagElement } from "@/libs/getTagElement";
 import { parseForNext } from "./parseForNext";
 
 export async function generateStaticParams() {
-  const contents = await getList();
+  const contents = (await getList()).contents;
 
   const paths = contents.map((post) => {
     return {
