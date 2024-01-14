@@ -1,0 +1,6 @@
+@use "/_scss/global/color" as *;
+@use "/_scss/global/float" as *;
+
+.float {
+  @include float();
+}

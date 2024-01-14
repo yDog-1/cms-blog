@@ -2,6 +2,7 @@
 @use "_scss/global/color" as *;
 @forward "_scss/global/tag/tag-color";
 @use "_scss/global/tag/tag-color" as *;
+@use "../float" as *;
 
 // 背景色に応じて文字色を適用
 // RGBの加重平均による明度の計算式…らしい(Bing Copilot)
@@ -32,30 +33,9 @@ $languages: (
 );
 .tag {
   li {
-    border-radius: 0.5rem;
-    box-shadow: 0px 3px 0 $gray-lighter;
-    transition: 0.3s;
-    position: relative;
+    @include float();
     &:hover {
       text-decoration: underline;
-    }
-    &:active {
-      transform: translate3d(0, 3px, 0);
-      box-shadow: none;
-    }
-    & > a {
-      display: block;
-      padding: 0 0.75rem;
-      &:active::before {
-        border-radius: 0.5rem;
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background-color: #67676733;
-      }
     }
   }
   @include bg-color($languages);
