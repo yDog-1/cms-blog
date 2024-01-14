@@ -1,8 +1,16 @@
 import { getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import PostList from "./PostList/PostList";
 import TopPost from "./PostList/TopPost";
+import { Content } from "@/types/Content";
+import ShowMore from "./PostList/ShowMore";
+
+export async function getMoreList(
+  offset: number
+): Promise<{ contents: Content[]; totalCount: number }> {
+  "use server";
+  return getList({ offset: offset });
+}
 
 export default async function TopPostList(props: {
   queries?: MicroCMSQueries;
@@ -16,7 +24,11 @@ export default async function TopPostList(props: {
   return (
     <div>
       <TopPost firstContent={firstContent} />
-      <PostList contents={otherContents} totalCount={totalCount} />
+      <ShowMore
+        getMoreList={getMoreList}
+        totalCount={totalCount}
+        firstRenderContents={otherContents}
+      ></ShowMore>
     </div>
   );
 }

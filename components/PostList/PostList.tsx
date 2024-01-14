@@ -1,20 +1,17 @@
 import Link from "next/link";
 import React from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
-import styles from "../PostList.module.scss";
+import styles from "./PostList.module.scss";
 import { Content } from "@/types/Content";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import { getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 
-export default async function PostList(props: {
+export default function PostList(props: {
   contents?: Content[];
   queries?: MicroCMSQueries;
-  totalCount: Number;
+  totalCount: number;
 }) {
-  const contents = props.contents
-    ? props.contents
-    : (await getList(props.queries)).contents;
+  const contents = props.contents;
   if (!contents || contents.length === 0) {
     return notFound();
   }
