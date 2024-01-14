@@ -1,4 +1,5 @@
 import { Blog } from "@/types/Blog";
+import { Content } from "@/types/Content";
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSDate, MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
@@ -18,7 +19,9 @@ export const client = createClient({
 });
 
 // ブログ一覧を取得
-export const getList = async (queries?: MicroCMSQueries) => {
+export async function getList(
+  queries?: MicroCMSQueries
+): Promise<{ contents: Content[]; totalCount: number }> {
   try {
     const { contents, totalCount } = await client
       .getList<Blog>({
@@ -39,13 +42,13 @@ export const getList = async (queries?: MicroCMSQueries) => {
     console.error(error);
     notFound();
   }
-};
+}
 
 // ブログの詳細を取得
-export const getDetail = async (
+export async function getDetail(
   contentId: string,
   queries?: MicroCMSQueries
-) => {
+): Promise<Content> {
   try {
     const detailData = await client
       .getListDetail<Blog>({
@@ -61,10 +64,10 @@ export const getDetail = async (
     console.error(error);
     notFound();
   }
-};
+}
 
 // UTCを現地時間に変換・published.dateに格納
-function localDate<T>(content: MicroCMSDate & Blog & T) {
+function localDate<T>(content: MicroCMSDate & Blog & T): Content {
   const published = (() => {
     try {
       if (!content.publishedAt) {
