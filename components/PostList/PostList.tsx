@@ -10,10 +10,11 @@ import { notFound } from "next/navigation";
 export default async function PostList(props: {
   contents?: Content[];
   queries?: MicroCMSQueries;
+  totalCount: Number;
 }) {
   const contents = props.contents
     ? props.contents
-    : await getList(props.queries);
+    : (await getList(props.queries)).contents;
   if (!contents || contents.length === 0) {
     return notFound();
   }
