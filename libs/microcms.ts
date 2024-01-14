@@ -23,7 +23,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
     const { contents, totalCount } = await client
       .getList<Blog>({
         endpoint: "blog",
-        queries,
+        queries: { limit: 10, ...queries },
       })
       .then((data) => {
         return {
