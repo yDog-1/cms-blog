@@ -20,17 +20,20 @@ export const client = createClient({
 // ブログ一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
   try {
-    const contents = await client
+    const { contents, totalCount } = await client
       .getList<Blog>({
         endpoint: "blog",
         queries,
       })
       .then((data) => {
-        return data.contents.map((content) => {
-          return localDate(content);
-        });
+        return {
+          contents: data.contents.map((content) => {
+            return localDate(content);
+          }),
+          totalCount: data.totalCount,
+        };
       });
-    return contents;
+    return { contents: contents, totalCount: totalCount };
   } catch (error) {
     // ここのエラー処理は考える
     console.error(error);

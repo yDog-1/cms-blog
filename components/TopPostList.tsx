@@ -7,7 +7,7 @@ import TopPost from "./PostList/TopPost";
 export default async function TopPostList(props: {
   queries?: MicroCMSQueries;
 }) {
-  const contents = await getList(props.queries);
+  const { contents, totalCount } = await getList(props.queries);
   if (!contents || contents.length === 0) {
     return notFound();
   }
@@ -16,7 +16,7 @@ export default async function TopPostList(props: {
   return (
     <div>
       <TopPost firstContent={firstContent} />
-      <PostList contents={otherContents} />
+      <PostList contents={otherContents} totalCount={totalCount} />
     </div>
   );
 }
