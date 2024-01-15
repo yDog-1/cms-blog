@@ -1,9 +1,8 @@
 import parse, { DOMNode, Element, domToReact } from "html-react-parser";
 import Link from "next/link";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Image from "next/image";
 import styles from "@/_scss/post/Post.module.scss";
+import HighlightCode from "./HighlightCode";
 
 export function parseForNext(rawHtml: string) {
   return parse(rawHtml, {
@@ -34,20 +33,11 @@ export function parseForNext(rawHtml: string) {
           | Text
           | Element;
         const code = (codeElement.firstChild as Text).data;
-        const language = (codeElement as Element).attribs.class.replace(
-          "language-",
-          ""
-        );
+        const language = (codeElement as Element).attribs.class;
         return (
           <div className={styles.codeBlock}>
             <div className={styles.dataFileName}>{dataFileName}</div>
-            <SyntaxHighlighter
-              language={language}
-              style={anOldHope}
-              className={styles.code}
-            >
-              {code}
-            </SyntaxHighlighter>
+            <HighlightCode code={code} language={language}></HighlightCode>
           </div>
         );
       }

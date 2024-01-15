@@ -170,18 +170,20 @@ $li-colors: (
     position: relative;
     .dataFileName {
       position: absolute;
-      // 言語によって色を変えたい
       background-color: $gray-lighter;
-      color: $white-text;
+      color: $black-text;
       display: inline;
       padding: 0 0.25rem;
       border-radius: 0.5rem 0;
     }
     pre.code {
       border-radius: 0.5rem 1rem 1rem;
+      color: #bcbcbc;
+      background-color: #262626;
       code {
         display: block;
-        padding: 2rem 1rem 0.5rem;
+        padding: 2rem 1rem 1rem;
+        overflow: scroll;
       }
     }
   }

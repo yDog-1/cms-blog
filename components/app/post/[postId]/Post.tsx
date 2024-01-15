@@ -1,7 +1,7 @@
 import { getDetail, getList } from "@/libs/microcms";
 import styles from "@/_scss/post/Post.module.scss";
 import { getTagElement } from "@/libs/getTagElement";
-import { parseForNext } from "./parseForNext";
+import { parseForNext } from "../../../../libs/post/parseForNext";
 
 export async function generateStaticParams() {
   const contents = (await getList()).contents;
