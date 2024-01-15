@@ -5,16 +5,16 @@ import "highlight.js/styles/base16/apprentice.css";
 
 export default function HighlightCode({
   code,
-  language,
+  languageClass,
 }: {
   code: string;
-  language: string;
+  languageClass: string;
 }) {
-  const highlight = hljs.highlightAuto(code);
-  const highlightCode = highlight.value;
+  const language = languageClass.replace("language-", "");
+  const highlightCode = hljs.highlight(language, code).value;
   return (
     <pre className={styles.code}>
-      <code className={language}>{parse(highlightCode)}</code>
+      <code className={languageClass}>{parse(highlightCode)}</code>
     </pre>
   );
 }

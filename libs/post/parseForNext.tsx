@@ -37,7 +37,7 @@ export function parseForNext(rawHtml: string) {
         return (
           <div className={styles.codeBlock}>
             <div className={styles.dataFileName}>{dataFileName}</div>
-            <HighlightCode code={code} language={language}></HighlightCode>
+            <HighlightCode code={code} languageClass={language}></HighlightCode>
           </div>
         );
       }
