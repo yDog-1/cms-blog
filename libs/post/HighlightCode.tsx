@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 import hljs from "highlight.js";
 import styles from "@/_scss/post/Post.module.scss";
-import "highlight.js/styles/base16/apprentice.css";
+import "highlight.js/styles/lioshi.css";
 
 export default function HighlightCode({
   code,
