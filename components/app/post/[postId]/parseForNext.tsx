@@ -3,7 +3,7 @@ import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Image from "next/image";
-import styles from "@/components/post/[postId]/Post.module.scss";
+import styles from "@/_scss/post/Post.module.scss";
 
 export function parseForNext(rawHtml: string) {
   return parse(rawHtml, {

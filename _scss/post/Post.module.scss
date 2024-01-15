@@ -1,6 +1,6 @@
 @use "_scss/global/default-width-style";
 @use "_scss/global/color" as *;
-@use "_scss/global/tag/tag";
+@use "_scss/tag/tag";
 
 $li-colors: (
   "1": $red-li,

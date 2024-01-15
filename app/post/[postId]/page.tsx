@@ -1,7 +1,7 @@
-import Post from "@/components/post/[postId]/Post";
+import Post from "@/components/app/post/[postId]/Post";
 import { getDetail } from "@/libs/microcms";
 import { Metadata } from "next";
-import styles from "@/components/post/[postId]/Post.module.scss";
+import styles from "@/_scss/post/Post.module.scss";
 
 // metadataを動的に適用
 export async function generateMetadata({

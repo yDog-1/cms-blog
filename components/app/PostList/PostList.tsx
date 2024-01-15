@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
-import styles from "./PostList.module.scss";
+import styles from "@/_scss/post-list/PostList.module.scss";
 import { Content } from "@/types/Content";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";

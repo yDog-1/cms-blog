@@ -1,5 +1,5 @@
 import { Tag } from "@/types/Blog";
-import styles from "@/components/post/[postId]/Post.module.scss";
+import styles from "@/_scss/post/Post.module.scss";
 import Link from "next/link";
 
 export function getTagElement(tag: Tag, CustomTag: "li" | "div") {

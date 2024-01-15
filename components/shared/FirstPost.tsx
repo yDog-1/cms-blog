@@ -1,9 +1,9 @@
 import { Content } from "@/types/Content";
-import styles from "./PostList.module.scss";
+import styles from "@/_scss/post-list/PostList.module.scss";
 import Link from "next/link";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-export default function TopPost(props: { firstContent: Content }) {
+export default function FirstPost(props: { firstContent: Content }) {
   const { firstContent } = props;
   return (
     <div

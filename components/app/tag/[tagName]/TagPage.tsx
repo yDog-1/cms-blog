@@ -1,14 +1,12 @@
 import { Tag } from "@/types/Blog";
-import style from "@/components/tag/[tagName]/TagPage.module.scss";
-import TopPostList from "@/components/TopPostList";
+import style from "@/_scss/tag/TagPage.module.scss";
+import TopPostList from "@/components/app/TopPage";
 
 const fixTag = (tagName: string) => {
-  switch (tagName) {
-    case "Next-js":
-      return tagName.replace("-", ".");
-    default:
-      return decodeURI(tagName);
+  if (tagName.includes("-")) {
+    return tagName.replace("-", ".");
   }
+  return decodeURI(tagName);
 };
 
 export default function TagPage({ tagName }: { tagName: Tag }) {

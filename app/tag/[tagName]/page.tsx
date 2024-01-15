@@ -1,4 +1,4 @@
-import TagPage from "@/components/tag/[tagName]/TagPage";
+import TagPage from "@/components/app/tag/[tagName]/TagPage";
 import { Tag } from "@/types/Blog";
 
 export default async function Page({

@@ -2,9 +2,9 @@
 import { Content } from "@/types/Content";
 import { useCallback, useState } from "react";
 import PostList from "./PostList";
-import styles from "./PostList.module.scss";
+import styles from "@/_scss/post-list/PostList.module.scss";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import Loading from "../shared/Loading";
+import Loading from "../../shared/Loading/Loading";
 
 // microCMS SDKのqueries limitの初期値
 const defaultLimit = 10;

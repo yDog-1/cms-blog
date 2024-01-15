@@ -1,8 +1,8 @@
 @forward "_scss/global/color";
 @use "_scss/global/color" as *;
-@forward "_scss/global/tag/tag-color";
-@use "_scss/global/tag/tag-color" as *;
-@use "../float" as *;
+@forward "_scss/tag/tag-color";
+@use "_scss/tag/tag-color" as *;
+@use "_scss/global/float" as *;
 
 // 背景色に応じて文字色を適用
 // RGBの加重平均による明度の計算式…らしい(Bing Copilot)

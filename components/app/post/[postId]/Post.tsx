@@ -1,5 +1,5 @@
 import { getDetail, getList } from "@/libs/microcms";
-import styles from "@/components/post/[postId]/Post.module.scss";
+import styles from "@/_scss/post/Post.module.scss";
 import { getTagElement } from "@/libs/getTagElement";
 import { parseForNext } from "./parseForNext";
 
