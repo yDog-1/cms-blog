@@ -61,7 +61,11 @@ export default function ShowMore(props: {
           </button>
         </div>
       ) : (
-        loading && <Loading />
+        loading && (
+          <div className="flex content-center justify-center py-5">
+            <Loading />
+          </div>
+        )
       )}
     </>
   );
