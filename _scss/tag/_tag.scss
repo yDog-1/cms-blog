@@ -34,6 +34,7 @@ $languages: (
 .tag {
   li {
     @include float();
+    padding: 0 0.5rem;
     &:hover {
       text-decoration: underline;
     }
