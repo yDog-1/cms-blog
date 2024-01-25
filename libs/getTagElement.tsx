@@ -3,8 +3,7 @@ import styles from "@/_scss/post/Post.module.scss";
 import Link from "next/link";
 
 export function getTagElement(tag: Tag, CustomTag: "li" | "div") {
-  // . があれば - にする
-  const language = tag.includes(".") ? tag.replace(".", "-") : tag;
+  const language = tag;
   return (
     <CustomTag key={tag} className={styles[language]}>
       <Link href={`/tag/${language}`}>{tag}</Link>
