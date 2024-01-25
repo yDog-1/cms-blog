@@ -1,8 +1,9 @@
 import { getDetail, getList } from "@/libs/microcms";
 import styles from "@/_scss/post/Post.module.scss";
-import { getTagElement } from "@/libs/getTagElement";
 import { parseForNext } from "../../../../libs/post/parseForNext";
+import TagIcon from "../../tag/TagIcon";
 
+// 動的ルーティングを生成
 export async function generateStaticParams() {
   const contents = (await getList()).contents;
 
@@ -27,11 +28,7 @@ export default async function Post({ postId }: Props) {
         <div>
           <p>{post.localPublishedAt}</p>
           <h1>{post.title}</h1>
-          <ul className={styles.tags}>
-            {post.tags.map((tag) => {
-              return getTagElement(tag, "li");
-            })}
-          </ul>
+          <TagIcon tags={post.tags} />
         </div>
       </span>
       <div>
