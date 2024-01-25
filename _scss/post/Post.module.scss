@@ -40,13 +40,13 @@ $li-colors: (
       line-height: 2.5rem;
       font-weight: 700;
     }
-    ul.tags {
-      @extend .tag;
-      display: flex;
-      gap: 0.5rem 0.25rem;
-      flex-wrap: wrap;
-    }
   }
+}
+.tags {
+  @extend .tag;
+  display: flex;
+  gap: 0.5rem 0.25rem;
+  flex-wrap: wrap;
 }
 .post {
   margin: 1rem 0.75rem 5rem;
