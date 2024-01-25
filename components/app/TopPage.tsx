@@ -12,8 +12,10 @@ export async function getMoreList(
   return getList({ offset: offset });
 }
 
-export default async function TopPage(props: { queries?: MicroCMSQueries }) {
-  const { contents, totalCount } = await getList(props.queries);
+type Props = { queries?: MicroCMSQueries };
+
+export default async function TopPage({ queries }: Props) {
+  const { contents, totalCount } = await getList(queries);
   if (!contents || contents.length === 0) {
     return notFound();
   }

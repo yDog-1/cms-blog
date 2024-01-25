@@ -10,16 +10,21 @@ import Loading from "../../shared/Loading/Loading";
 const defaultLimit = 10;
 const addOffset = 9;
 
-export default function ShowMore(props: {
+type Props = {
   getMoreList: (
     offset: number
   ) => Promise<{ contents: Content[]; totalCount: number }>;
   totalCount: number;
   firstRenderContents: Content[];
   queries?: MicroCMSQueries;
-}) {
-  const { getMoreList, totalCount, firstRenderContents } = props;
+};
 
+export default function ShowMore({
+  getMoreList,
+  totalCount,
+  firstRenderContents,
+  queries,
+}: Props) {
   const [offset, setOffset] = useState(defaultLimit);
   const [contents, setContents] = useState(firstRenderContents);
   const [visibleButton, setVisibleButton] = useState(

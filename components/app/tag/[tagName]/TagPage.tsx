@@ -9,7 +9,9 @@ const fixTag = (tagName: string) => {
   return decodeURI(tagName);
 };
 
-export default function TagPage({ tagName }: { tagName: Tag }) {
+type Props = { tagName: Tag };
+
+export default function TagPage({ tagName }: Props) {
   const [fixedTagName, decodeTagName] = [fixTag(tagName), decodeURI(tagName)];
   return (
     <>

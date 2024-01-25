@@ -15,7 +15,9 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
-export default async function Post({ postId }: { postId: string }) {
+type Props = { postId: string };
+
+export default async function Post({ postId }: Props) {
   const post = await getDetail(postId);
   const parsedBody = parseForNext(post.body);
 

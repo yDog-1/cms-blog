@@ -6,12 +6,13 @@ import { Content } from "@/types/Content";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import { notFound } from "next/navigation";
 
-export default function PostList(props: {
+type Props = {
   contents?: Content[];
   queries?: MicroCMSQueries;
   totalCount: number;
-}) {
-  const contents = props.contents;
+};
+
+export default function PostList({ contents, queries, totalCount }: Props) {
   if (!contents || contents.length === 0) {
     return notFound();
   }
