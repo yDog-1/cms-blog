@@ -1,30 +1,13 @@
-import { getList } from "@/libs/microcms";
 import styles from "@/_scss/post/Post.module.scss";
 import { parseForNext } from "../../../../libs/post/parseForNext";
 import TagIcon from "../../tag/TagIcon";
-import { MicroCMSQueries } from "microcms-js-sdk";
 import { Content } from "@/types/Content";
 
-// 動的ルーティングを生成
-export async function generateStaticParams() {
-  const contents = (await getList()).contents;
-
-  const paths = contents.map((post) => {
-    return {
-      postId: post.id,
-    };
-  });
-
-  return [...paths];
-}
-
 type Props = {
-  postId: string;
-  getDetail(contentId: string, queries?: MicroCMSQueries): Promise<Content>;
+  post: Content;
 };
 
-export default async function Post({ postId, getDetail }: Props) {
-  const post = await getDetail(postId);
+export default async function Post({ post }: Props) {
   const parsedBody = parseForNext(post.body);
 
   return (

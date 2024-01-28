@@ -1,5 +1,5 @@
 import Post from "@/components/app/post/[postId]/Post";
-import { getDetail } from "@/libs/microcms";
+import { getDetail, getList } from "@/libs/microcms";
 import { Metadata } from "next";
 import styles from "@/_scss/post/Post.module.scss";
 
@@ -27,14 +27,28 @@ export async function generateMetadata({
   };
 }
 
+// 動的ルーティングを生成
+export async function generateStaticParams() {
+  const contents = (await getList()).contents;
+
+  const paths = contents.map((post) => {
+    return {
+      postId: post.id,
+    };
+  });
+
+  return [...paths];
+}
+
 export default async function Page({
   params: { postId },
 }: {
   params: { postId: string };
 }) {
+  const post = await getDetail(postId);
   return (
     <main className={styles.main}>
-      <Post postId={postId} />
+      <Post post={post} />
     </main>
   );
 }
