@@ -20,7 +20,7 @@ export default function PreviewPage({ getDetail }: Props) {
       setPost(prePost);
     };
     previewPost();
-  }, []);
+  }, [contentId, draftKey, getDetail]);
 
   if (!post)
     return (
