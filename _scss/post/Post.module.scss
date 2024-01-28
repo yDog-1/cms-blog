@@ -97,7 +97,7 @@ $li-colors: (
   }
   ul {
     margin: 0.5rem 0;
-    padding: 0.75rem;
+    padding: 0.75rem 0 0.75rem 0.75rem;
     li {
       position: relative;
       line-height: 1.5rem;
@@ -126,7 +126,7 @@ $li-colors: (
   ol {
     counter-reset: list;
     margin: 0.5rem 0;
-    padding: 0.75rem;
+    padding: 0.75rem 0 0.75rem 0.75rem;
     li {
       position: relative;
       line-height: 1.5rem;
