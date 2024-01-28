@@ -7,7 +7,7 @@ type Props = {
   post: Content;
 };
 
-export default async function Post({ post }: Props) {
+export default function Post({ post }: Props) {
   const parsedBody = parseForNext(post.body);
 
   return (
