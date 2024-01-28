@@ -1,7 +1,11 @@
 import { Blog } from "@/types/Blog";
 import { Content } from "@/types/Content";
 import { createClient } from "microcms-js-sdk";
-import type { MicroCMSDate, MicroCMSQueries } from "microcms-js-sdk";
+import type {
+  CustomRequestInit,
+  MicroCMSDate,
+  MicroCMSQueries,
+} from "microcms-js-sdk";
 import { notFound } from "next/navigation";
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
@@ -47,7 +51,8 @@ export async function getList(
 // ブログの詳細を取得
 export async function getDetail(
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
+  customRequestInit?: CustomRequestInit
 ): Promise<Content> {
   try {
     const detailData = await client
@@ -55,6 +60,7 @@ export async function getDetail(
         endpoint: "blog",
         contentId,
         queries,
+        customRequestInit: customRequestInit,
       })
       .then((data) => {
         return localDate(data);

@@ -9,7 +9,7 @@ async function getPostDetail(
   draftKey: string
 ): Promise<Content> {
   "use server";
-  return getDetail(contentId, { draftKey: draftKey });
+  return getDetail(contentId, { draftKey: draftKey }, { cache: "no-store" });
 }
 
 export default async function Page() {
