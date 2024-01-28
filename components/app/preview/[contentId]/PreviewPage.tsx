@@ -14,10 +14,6 @@ export default function PreviewPage({ getDetail }: Props) {
   const draftKey = useSearchParams().get("draftKey");
   const [post, setPost] = useState<Content>();
 
-  // const previewPost = async () => {
-  //   setPost(await getDetail(contentId, draftKey!));
-  // };
-
   useEffect(() => {
     const previewPost = async () => {
       const prePost = await getDetail(contentId, draftKey!);
