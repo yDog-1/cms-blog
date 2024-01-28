@@ -12,7 +12,10 @@ const fixTag = (tagName: string) => {
 type Props = { tagName: Tag };
 
 export default function TagPage({ tagName }: Props) {
-  const [fixedTagName, decodeTagName] = [fixTag(tagName), decodeURI(tagName)];
+  const [fixedTagName, decodeTagName] = [
+    fixTag(tagName),
+    decodeURI(tagName).replace(".", "-"),
+  ];
   return (
     <>
       <div>
