@@ -1,5 +1,6 @@
 "use client";
 import Post from "@/components/app/post/[postId]/Post";
+import Loading from "@/components/shared/Loading/Loading";
 import { Content } from "@/types/Content";
 
 import { usePathname, useSearchParams } from "next/navigation";
@@ -13,22 +14,24 @@ export default function PreviewPage({ getDetail }: Props) {
   const draftKey = useSearchParams().get("draftKey");
   const [post, setPost] = useState<Content>();
 
-  const previewPost = async () => {
-    setPost(await getDetail(contentId, draftKey!));
-  };
+  // const previewPost = async () => {
+  //   setPost(await getDetail(contentId, draftKey!));
+  // };
 
-  return (
-    <>
-      {post ? (
-        <Post post={post} />
-      ) : (
-        <button
-          className="mt-10 rounded-xl bg-red-500 px-2 py-0.5"
-          onClick={previewPost}
-        >
-          プレビューする
-        </button>
-      )}
-    </>
-  );
+  useEffect(() => {
+    const previewPost = async () => {
+      const prePost = await getDetail(contentId, draftKey!);
+      setPost(prePost);
+    };
+    previewPost();
+  }, []);
+
+  if (!post)
+    return (
+      <div className="m-auto flex content-center justify-center">
+        <Loading />
+      </div>
+    );
+
+  return <Post post={post} />;
 }
