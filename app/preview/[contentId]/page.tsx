@@ -4,7 +4,7 @@ import { getDetail } from "@/libs/microcms";
 import { Content } from "@/types/Content";
 
 //server action用関数
-export async function getPostDetail(
+async function getPostDetail(
   contentId: string,
   draftKey: string
 ): Promise<Content> {
