@@ -14,7 +14,7 @@ type Props = {
 
 export default function PostList({ contents, queries, totalCount }: Props) {
   if (!contents || contents.length === 0) {
-    return notFound();
+    return;
   }
   return (
     <ul className="mt-3 grid grid-cols-1 gap-3 md:mt-6 md:grid-cols-3">

@@ -1,7 +1,7 @@
 import { getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import FirstPost from "../shared/FirstPost";
+import FirstPost from "./PostList/FirstPost";
 import { Content } from "@/types/Content";
 import ShowMore from "./PostList/ShowMore";
 
