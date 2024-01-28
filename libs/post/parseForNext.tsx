@@ -1,8 +1,11 @@
-import parse, { DOMNode, Element, domToReact } from "html-react-parser";
+import parse, { DOMNode, Element, Text, domToReact } from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/_scss/post/Post.module.scss";
 import HighlightCode from "./HighlightCode";
+
+let liInUlIndex = 0; //ページ全体のul>liのカウント用
+let liInOlIndex = 0; //ol>liのカウント
 
 export function parseForNext(rawHtml: string) {
   return parse(rawHtml, {
@@ -29,9 +32,7 @@ export function parseForNext(rawHtml: string) {
         // コードブロックなら
         const dataFileName = domNode.attribs["data-filename"];
         const preElement = domNode.firstChild as Element;
-        const codeElement = (preElement as Element).firstChild as
-          | Text
-          | Element;
+        const codeElement = (preElement as Element).firstChild as Element;
         const code = (codeElement.firstChild as Text).data;
         const language = (codeElement as Element).attribs.class;
         return (
@@ -51,6 +52,42 @@ export function parseForNext(rawHtml: string) {
             width={Number(atr.width)}
             height={Number(atr.height)}
           ></Image>
+        );
+      }
+      // ul処理
+      if (domNode instanceof Element && domNode.name === "ul") {
+        const liChildren = domNode.children;
+        return (
+          <ul>
+            {liChildren.map((li) => {
+              if (liInUlIndex > 5) liInUlIndex = 0;
+              const data = ((li as Element).firstChild as Text).data;
+              liInUlIndex += 1;
+              return (
+                <li key={data} className={styles[`ul-li-${liInUlIndex}`]}>
+                  {data}
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+      // ol処理
+      if (domNode instanceof Element && domNode.name === "ol") {
+        const liChildren = domNode.children;
+        return (
+          <ol>
+            {liChildren.map((li) => {
+              if (liInOlIndex > 5) liInOlIndex = 0;
+              const data = ((li as Element).firstChild as Text).data;
+              liInOlIndex += 1;
+              return (
+                <li key={data} className={styles[`ol-li-${liInOlIndex}`]}>
+                  {data}
+                </li>
+              );
+            })}
+          </ol>
         );
       }
     },
