@@ -4,7 +4,6 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import styles from "@/_scss/post-list/PostList.module.scss";
 import { Content } from "@/types/Content";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import { notFound } from "next/navigation";
 
 type Props = {
   contents?: Content[];
