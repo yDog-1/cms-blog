@@ -1,4 +1,5 @@
 import { MicroCMSDate } from "microcms-js-sdk";
+import { Tag } from "./Tag";
 
 //ブログの型定義
 export type Blog = {
@@ -7,13 +8,3 @@ export type Blog = {
   body: string;
   tags: Tag[];
 } & MicroCMSDate;
-
-export type Tag =
-  | "Next.js"
-  | "Javascript"
-  | "Typescript"
-  | "microCMS"
-  | "tailwindcss"
-  | "scss"
-  | "Notion"
-  | "その他";
