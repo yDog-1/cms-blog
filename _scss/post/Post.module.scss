@@ -1,6 +1,5 @@
 @use "_scss/global/default-width-style";
 @use "_scss/global/color" as *;
-@use "_scss/tag/tag";
 
 $li-colors: (
   "1": $red-li,
@@ -41,12 +40,6 @@ $li-colors: (
       font-weight: 700;
     }
   }
-}
-.tags {
-  @extend .tag;
-  display: flex;
-  gap: 0.5rem 0.25rem;
-  flex-wrap: wrap;
 }
 .post {
   margin: 1rem 0.75rem 5rem;
