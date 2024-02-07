@@ -1,5 +1,5 @@
-import { Tag } from "@/types/Blog";
-import style from "@/_scss/tag/TagPage.module.scss";
+import { Tag } from "@/types/Tag";
+import style from "@/_scss/tag/TagPageList.module.scss";
 import TopPostList from "@/components/app/TopPage";
 
 const fixTag = (tagName: string) => {
@@ -11,7 +11,7 @@ const fixTag = (tagName: string) => {
 
 type Props = { tagName: Tag };
 
-export default function TagPage({ tagName }: Props) {
+export default function TagPageList({ tagName }: Props) {
   const [fixedTagName, decodeTagName] = [
     fixTag(tagName),
     decodeURI(tagName).replace(".", "-"),
