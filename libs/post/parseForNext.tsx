@@ -4,8 +4,7 @@ import Image from "next/image";
 import styles from "@/_scss/post/Post.module.scss";
 import HighlightCode from "./HighlightCode";
 
-let liInUlIndex = 0; //ページ全体のul>liのカウント用
-let liInOlIndex = 0; //ol>liのカウント
+let liIndex = 0; //ページ全体のliのカウント用
 
 export function parseForNext(rawHtml: string) {
   return parse(rawHtml, {
@@ -36,10 +35,11 @@ export function parseForNext(rawHtml: string) {
         const code = (codeElement.firstChild as Text).data;
         const language = (codeElement as Element).attribs.class;
         return (
-          <div className={styles.codeBlock}>
-            <div className={styles.dataFileName}>{dataFileName}</div>
-            <HighlightCode code={code} languageClass={language}></HighlightCode>
-          </div>
+          <HighlightCode
+            code={code}
+            languageClass={language}
+            dataFileName={dataFileName}
+          />
         );
       }
       // 画像の処理
@@ -60,11 +60,11 @@ export function parseForNext(rawHtml: string) {
         return (
           <ul>
             {liChildren.map((li) => {
-              if (liInUlIndex > 5) liInUlIndex = 0;
+              if (liIndex > 5) liIndex = 0;
               const data = ((li as Element).firstChild as Text).data;
-              liInUlIndex += 1;
+              liIndex += 1;
               return (
-                <li key={data} className={styles[`ul-li-${liInUlIndex}`]}>
+                <li key={data} className={styles[`ul-li-${liIndex}`]}>
                   {data}
                 </li>
               );
@@ -78,11 +78,11 @@ export function parseForNext(rawHtml: string) {
         return (
           <ol>
             {liChildren.map((li) => {
-              if (liInOlIndex > 5) liInOlIndex = 0;
+              if (liIndex > 5) liIndex = 0;
               const data = ((li as Element).firstChild as Text).data;
-              liInOlIndex += 1;
+              liIndex += 1;
               return (
-                <li key={data} className={styles[`ol-li-${liInOlIndex}`]}>
+                <li key={data} className={styles[`ol-li-${liIndex}`]}>
                   {data}
                 </li>
               );

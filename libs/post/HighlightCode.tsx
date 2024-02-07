@@ -1,20 +1,27 @@
 import parse from "html-react-parser";
 import hljs from "highlight.js";
-import styles from "@/_scss/post/Post.module.scss";
+import styles from "./Code.module.scss";
 import "highlight.js/styles/lioshi.css";
+
+type Props = {
+  code: string;
+  languageClass: string;
+  dataFileName: string;
+};
 
 export default function HighlightCode({
   code,
   languageClass,
-}: {
-  code: string;
-  languageClass: string;
-}) {
+  dataFileName,
+}: Props) {
   const language = languageClass.replace("language-", "");
   const highlightCode = hljs.highlight(language, code).value;
   return (
-    <pre className={styles.code}>
-      <code className={languageClass}>{parse(highlightCode)}</code>
-    </pre>
+    <div className={styles.codeBlock}>
+      <div className={styles.dataFileName}>{dataFileName}</div>
+      <pre className={styles.code}>
+        <code className={languageClass}>{parse(highlightCode)}</code>
+      </pre>
+    </div>
   );
 }
