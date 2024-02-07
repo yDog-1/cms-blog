@@ -1,6 +1,6 @@
 import Link from "next/link";
-import X from "./logo/X";
-import Github from "./logo/Github";
+import X from "../elements/logo/X";
+import Github from "../elements/logo/Github";
 
 export const Header = () => {
   const darkMode = false;
