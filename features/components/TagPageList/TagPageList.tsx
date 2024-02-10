@@ -20,7 +20,7 @@ export default function TagPageList({ tagName }: Props) {
     <>
       <div>
         <div
-          className={`${style.tags} mx-3 flex flex-col items-center md:flex-row`}
+          className={`${style.tag} mx-3 flex flex-col items-center md:flex-row`}
         >
           <div
             className={`${style[decodeTagName]} my-8 ml-5 w-fit rounded-md px-6 pb-3  drop-shadow-xl`}

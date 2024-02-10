@@ -7,7 +7,7 @@ type Props = {
 
 export default async function Page({ params: { tagName } }: Props) {
   return (
-    <main className="flex flex-col">
+    <main>
       <TagPage tagName={tagName} />
     </main>
   );
