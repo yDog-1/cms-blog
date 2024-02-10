@@ -1,5 +1,5 @@
 import { Tag } from "@/types/Tag";
-import styles from "@/_scss/post/Post.module.scss";
+import styles from "./TagIcon.module.scss";
 import Link from "next/link";
 
 type Props = {

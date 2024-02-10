@@ -1,4 +1,4 @@
-import styles from "@/_scss/post/Post.module.scss";
+import styles from "./TagIcon.module.scss";
 import TagIcon from "@/components/elements/tagIcon/TagIcon";
 import { Tag } from "@/types/Tag";
 
