@@ -24,7 +24,6 @@ export function parseForNext(rawHtml: string) {
           // childrenの型をElement | Textとする
           (node): node is Element | Text => isElement(node) || isText(node)
         );
-        console.dir(children);
         return <Link href={domNode.attribs.href}>{domToReact(children)}</Link>;
       }
       // コードブロックの処理
