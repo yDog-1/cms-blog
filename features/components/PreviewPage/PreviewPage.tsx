@@ -2,25 +2,23 @@
 import Post from "@/features/components/Post/Post";
 import Loading from "@/components/elements/Loading/Loading";
 import { Content } from "@/types/Content";
-
-import { usePathname, useSearchParams } from "next/navigation";
+import { notFound, usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import getPostDetail from "./getPostDetail";
 
-type Props = {
-  getDetail(contentId: string, draftKey: string): Promise<Content>;
-};
-export default function PreviewPage({ getDetail }: Props) {
+export default function PreviewPage() {
   const contentId = usePathname().replace("/preview/", "");
   const draftKey = useSearchParams().get("draftKey");
+  if (typeof draftKey !== "string") notFound();
   const [post, setPost] = useState<Content>();
 
   useEffect(() => {
     const previewPost = async () => {
-      const prePost = await getDetail(contentId, draftKey!);
+      const prePost = await getPostDetail(contentId, draftKey);
       setPost(prePost);
     };
     previewPost();
-  }, [contentId, draftKey, getDetail]);
+  }, []);
 
   if (!post)
     return (

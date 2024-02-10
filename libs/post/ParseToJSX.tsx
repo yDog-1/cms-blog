@@ -1,38 +1,16 @@
 import parse, { Element, Text, domToReact } from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./ParseToJSX.module.scss";
+import styles from "./parseToJSX.module.scss";
 import HighlightCode from "./HighlightCode";
 
 const isElement = (element: unknown): element is Element =>
   element instanceof Element;
 const isText = (text: unknown): text is Text => text instanceof Text;
 
-type Hlc = {
-  code: string;
-  languageClass: string;
-  dataFileName: string;
-};
-const choseHlcObj = (domNode: Element): Hlc | undefined => {
-  if (!isElement(domNode.firstChild)) return;
-  if (!isElement(domNode.firstChild.firstChild)) return;
-
-  const codeElement = domNode.firstChild.firstChild;
-  if (!isText(codeElement.firstChild)) return;
-
-  const code = codeElement.firstChild.data;
-  const languageClass = codeElement.attribs.class;
-  const dataFileName = domNode.attribs["data-filename"];
-  return { code, languageClass, dataFileName };
-};
-
 let liIndex = 0; //ページ全体のliのカウント用
 
-type Props = {
-  rawHtml: string;
-};
-
-export default function ParseToJSX({ rawHtml }: Props) {
+export default function parseToJSX(rawHtml: string) {
   return parse(rawHtml, {
     replace: (domNode) => {
       // aタグの処理
@@ -55,9 +33,17 @@ export default function ParseToJSX({ rawHtml }: Props) {
           return domNode;
         }
         // コードブロックなら
-        const hlc = choseHlcObj(domNode);
-        if (hlc === undefined) return;
-        return <HighlightCode hlc={hlc} />;
+        if (!isElement(domNode.firstChild)) return;
+        if (!isElement(domNode.firstChild.firstChild)) return;
+
+        const codeElement = domNode.firstChild.firstChild;
+        if (!isText(codeElement.firstChild)) return;
+
+        const code = codeElement.firstChild.data;
+        const languageClass = codeElement.attribs.class;
+        const dataFileName = domNode.attribs["data-filename"];
+
+        return <HighlightCode hlc={{ code, languageClass, dataFileName }} />;
       }
       // 画像の処理
       if (domNode instanceof Element && domNode.name === "img") {
