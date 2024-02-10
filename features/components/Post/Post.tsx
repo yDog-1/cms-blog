@@ -1,5 +1,5 @@
-import styles from "@/_scss/post/Post.module.scss";
-import { parseForNext } from "@/libs/post/parseForNext";
+import styles from "@/features/components/Post/Post.module.scss";
+import ParseToJSX from "@/libs/post/ParseToJSX";
 import TagIcons from "@/components/elements/tagIcon/TagIcons";
 import { Content } from "@/types/Content";
 
@@ -8,8 +8,6 @@ type Props = {
 };
 
 export default function Post({ post }: Props) {
-  const parsedBody = parseForNext(post.body);
-
   return (
     <>
       <span className={styles.head}>
@@ -20,7 +18,9 @@ export default function Post({ post }: Props) {
         </div>
       </span>
       <div>
-        <div className={styles.post}>{parsedBody}</div>
+        <div className={styles.post}>
+          <ParseToJSX rawHtml={post.body} />
+        </div>
       </div>
     </>
   );
