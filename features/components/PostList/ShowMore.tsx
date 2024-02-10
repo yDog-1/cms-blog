@@ -2,7 +2,7 @@
 import { Content } from "@/types/Content";
 import { useCallback, useState } from "react";
 import BeforePostList from "./BeforePostList";
-import styles from "@/_scss/post-list/PostList.module.scss";
+import styles from "@/features/components/PostList/PostList.module.scss";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import Loading from "@/components/elements/Loading/Loading";
 
