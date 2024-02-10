@@ -1,5 +1,5 @@
 import styles from "@/features/components/Post/Post.module.scss";
-import parseToJSX from "@/libs/post/parseToJSX";
+import parseToJSX from "@/libs/post/ParseToJSX";
 import TagIcons from "@/components/elements/tagIcon/TagIcons";
 import { Content } from "@/types/Content";
 
