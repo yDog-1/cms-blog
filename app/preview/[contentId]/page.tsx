@@ -1,4 +1,3 @@
-import styles from "@/_scss/post/Post.module.scss";
 import PreviewPage from "@/features/components/PreviewPage/PreviewPage";
 import { getDetail } from "@/libs/microcms";
 import { Content } from "@/types/Content";
@@ -14,7 +13,7 @@ async function getPostDetail(
 
 export default async function Page() {
   return (
-    <main className={styles.main}>
+    <main className=" flex flex-col items-center bg-white ">
       <PreviewPage getDetail={getPostDetail} />
     </main>
   );
