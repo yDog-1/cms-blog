@@ -36,7 +36,7 @@ export async function generateStaticParams() {
     };
   });
 
-  return [...paths];
+  return paths;
 }
 
 export default async function Page({
