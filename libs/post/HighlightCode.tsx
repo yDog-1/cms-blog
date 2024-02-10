@@ -1,6 +1,6 @@
 import parse from "html-react-parser";
 import hljs from "highlight.js";
-import styles from "./Code.module.scss";
+import styles from "./HighlightCode.module.scss";
 import "highlight.js/styles/lioshi.css";
 
 type Props = {

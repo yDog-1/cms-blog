@@ -1,3 +1,6 @@
+@forward "_scss/global/color";
+@use "_scss/global/color" as *;
+
 div.codeBlock {
   position: relative;
   .dataFileName {

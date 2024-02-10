@@ -1,0 +1,9 @@
+@use "_scss/tag/tag" as *;
+@use "_scss/global/default-width-style";
+
+.tags {
+  @include bg-color($languages);
+}
+.container {
+  @extend .default-width-style;
+}
