@@ -11,7 +11,11 @@ type Props = {
   totalCount: number;
 };
 
-export default function PostList({ contents, queries, totalCount }: Props) {
+export default function ChildrenPostList({
+  contents,
+  queries,
+  totalCount,
+}: Props) {
   if (!contents || contents.length === 0) {
     return;
   }

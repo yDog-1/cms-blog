@@ -1,6 +1,6 @@
 import { Tag } from "@/types/Tag";
 import style from "./TagPageList.module.scss";
-import TopPostList from "@/components/app/TopPage";
+import TopPostList from "@/components/layouts/TopPage";
 
 const fixTag = (tagName: string) => {
   if (tagName.includes("-")) {

@@ -1,7 +1,7 @@
 "use client";
 import { Content } from "@/types/Content";
 import { useCallback, useState } from "react";
-import PostList from "./PostList";
+import BeforePostList from "./BeforePostList";
 import styles from "@/_scss/post-list/PostList.module.scss";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import Loading from "@/components/elements/Loading/Loading";
@@ -55,7 +55,7 @@ export default function ShowMore({
 
   return (
     <>
-      <PostList contents={contents} totalCount={totalCount} />
+      <BeforePostList contents={contents} totalCount={totalCount} />
       {visibleButton ? (
         <div>
           <button

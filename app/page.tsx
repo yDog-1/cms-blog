@@ -1,4 +1,4 @@
-import TopPage from "@/components/app/TopPage";
+import TopPage from "@/components/layouts/TopPage";
 
 export default async function Home() {
   return (

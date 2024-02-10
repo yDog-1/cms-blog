@@ -1,9 +1,9 @@
 import { getList } from "@/libs/microcms";
 import { notFound } from "next/navigation";
 import { MicroCMSQueries } from "microcms-js-sdk";
-import FirstPost from "./PostList/FirstPost";
 import { Content } from "@/types/Content";
-import ShowMore from "./PostList/ShowMore";
+import FirstPost from "@/features/components/PostList/FirstPost";
+import ShowMore from "@/features/components/PostList/ShowMore";
 
 export async function getMoreList(
   offset: number
