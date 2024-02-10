@@ -26,13 +26,17 @@ export async function generateMetadata({
   };
 }
 
-// 動的ルーティングを生成
-export async function generateStaticParams() {
+// 動的ルーティングを静的に生成
+export async function getStaticPaths() {
   const contents = (await getList()).contents;
 
   const paths = contents.map((post) => {
+    console.log(post.id);
+
     return {
-      postId: post.id,
+      params: {
+        postId: post.id,
+      },
     };
   });
 
