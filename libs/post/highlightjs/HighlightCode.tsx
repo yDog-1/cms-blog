@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/common";
 import styles from "./HighlightCode.module.scss";
 import "highlight.js/styles/lioshi.css";
 

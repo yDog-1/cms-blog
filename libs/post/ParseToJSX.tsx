@@ -2,7 +2,7 @@ import parse, { Element, Text, domToReact } from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./ParseToJSX.module.scss";
-import HighlightCode from "./HighlightCode";
+import HighlightCode from "./highlightjs/HighlightCode";
 
 const isElement = (element: unknown): element is Element =>
   element instanceof Element;
