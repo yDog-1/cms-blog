@@ -1,8 +1,12 @@
-import parse, { DOMNode, Element, Text, domToReact } from "html-react-parser";
+import parse, { Element, Text, domToReact } from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/_scss/post/Post.module.scss";
 import HighlightCode from "./HighlightCode";
+
+const isElement = (element: unknown): element is Element =>
+  element instanceof Element;
+const isText = (text: unknown): text is Text => text instanceof Text;
 
 let liIndex = 0; //ページ全体のliのカウント用
 
@@ -16,11 +20,12 @@ export function parseForNext(rawHtml: string) {
           return domNode;
         }
         // それ以外はLinkタグに置き換える。
-        return (
-          <Link href={domNode.attribs.href}>
-            {domToReact(domNode.children as DOMNode[])}
-          </Link>
+        const children = domNode.children.filter(
+          // childrenの型をElement | Textとする
+          (node): node is Element | Text => isElement(node) || isText(node)
         );
+        console.dir(children);
+        return <Link href={domNode.attribs.href}>{domToReact(children)}</Link>;
       }
       // コードブロックの処理
       if (domNode instanceof Element && domNode.name === "div") {
@@ -29,11 +34,15 @@ export function parseForNext(rawHtml: string) {
           return domNode;
         }
         // コードブロックなら
+        if (!isElement(domNode.firstChild)) return;
+        if (!isElement(domNode.firstChild.firstChild)) return;
+
+        const codeElement = domNode.firstChild.firstChild;
+        if (!isText(codeElement.firstChild)) return;
+
+        const code = codeElement.firstChild.data;
+        const language = codeElement.attribs.class;
         const dataFileName = domNode.attribs["data-filename"];
-        const preElement = domNode.firstChild as Element;
-        const codeElement = (preElement as Element).firstChild as Element;
-        const code = (codeElement.firstChild as Text).data;
-        const language = (codeElement as Element).attribs.class;
         return (
           <HighlightCode
             code={code}
@@ -60,8 +69,12 @@ export function parseForNext(rawHtml: string) {
         return (
           <ul>
             {liChildren.map((li) => {
+              if (!isElement(li)) return;
+              if (!isText(li.firstChild)) return;
+
+              const data = li.firstChild.data;
+
               if (liIndex > 5) liIndex = 0;
-              const data = ((li as Element).firstChild as Text).data;
               liIndex += 1;
               return (
                 <li key={data} className={styles[`ul-li-${liIndex}`]}>
@@ -78,8 +91,12 @@ export function parseForNext(rawHtml: string) {
         return (
           <ol>
             {liChildren.map((li) => {
+              if (!isElement(li)) return;
+              if (!isText(li.firstChild)) return;
+
+              const data = li.firstChild.data;
+
               if (liIndex > 5) liIndex = 0;
-              const data = ((li as Element).firstChild as Text).data;
               liIndex += 1;
               return (
                 <li key={data} className={styles[`ol-li-${liIndex}`]}>
