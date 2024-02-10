@@ -1,6 +1,6 @@
 "use client";
-import Post from "@/components/app/post/[postId]/Post";
-import Loading from "@/components/shared/Loading/Loading";
+import Post from "@/features/components/Post/Post";
+import Loading from "@/components/elements/Loading/Loading";
 import { Content } from "@/types/Content";
 
 import { usePathname, useSearchParams } from "next/navigation";
