@@ -1,5 +1,5 @@
 import styles from "@/_scss/post/Post.module.scss";
-import PreviewPage from "@/components/app/preview/[contentId]/PreviewPage";
+import PreviewPage from "@/features/components/PreviewPage/PreviewPage";
 import { getDetail } from "@/libs/microcms";
 import { Content } from "@/types/Content";
 

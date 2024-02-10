@@ -1,5 +1,5 @@
-import Github from "@/components/shared/logo/Github";
-import X from "@/components/shared/logo/X";
+import Github from "@/components/elements/logo/Github";
+import X from "@/components/elements/logo/X";
 import Link from "next/link";
 
 export default function Page() {

@@ -1,4 +1,4 @@
-import Post from "@/components/app/post/[postId]/Post";
+import Post from "@/features/components/Post/Post";
 import { getDetail, getList } from "@/libs/microcms";
 import { Metadata } from "next";
 import styles from "@/_scss/post/Post.module.scss";
