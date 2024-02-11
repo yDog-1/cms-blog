@@ -27,11 +27,11 @@ export default function parseToJSX(rawHtml: string) {
         return <Link href={domNode.attribs.href}>{domToReact(children)}</Link>;
       }
       // コードブロックの処理
-      if (domNode instanceof Element && domNode.name === "div") {
-        // コードブロックじゃない
-        if (!("data-filename" in domNode.attribs)) {
-          return domNode;
-        }
+      if (
+        domNode instanceof Element &&
+        domNode.name === "div" &&
+        "data-filename" in domNode.attribs
+      ) {
         // コードブロックなら
         if (!isElement(domNode.firstChild)) return;
         if (!isElement(domNode.firstChild.firstChild)) return;
