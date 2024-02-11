@@ -32,11 +32,13 @@ export default function parseToJSX(rawHtml: string) {
         domNode.name === "div" &&
         "data-filename" in domNode.attribs
       ) {
-        // コードブロックなら
+        // <pre>
         if (!isElement(domNode.firstChild)) return;
+        // <code>
         if (!isElement(domNode.firstChild.firstChild)) return;
-
         const codeElement = domNode.firstChild.firstChild;
+
+        // codeの内容
         if (!isText(codeElement.firstChild)) return;
 
         const code = codeElement.firstChild.data;
