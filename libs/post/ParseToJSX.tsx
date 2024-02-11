@@ -17,7 +17,7 @@ export default function parseToJSX(rawHtml: string) {
       if (domNode instanceof Element && domNode.name === "a") {
         // 同一ドメインじゃない
         if (domNode.attribs.href.indexOf("http") !== -1) {
-          return domNode;
+          return;
         }
         // それ以外はLinkタグに置き換える。
         const children = domNode.children.filter(
