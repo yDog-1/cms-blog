@@ -5,6 +5,7 @@ import BeforePostList from "./BeforePostList";
 import styles from "@/features/components/PostList/PostList.module.scss";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import Loading from "@/components/elements/Loading/Loading";
+import LoadingList from "@/components/elements/Loading/LoadingList/LoadingList";
 
 // microCMS SDKのqueries limitの初期値
 const defaultLimit = 10;
@@ -23,7 +24,6 @@ export default function ShowMore({
   getMoreList,
   totalCount,
   firstRenderContents,
-  queries,
 }: Props) {
   const [offset, setOffset] = useState(defaultLimit);
   const [contents, setContents] = useState(firstRenderContents);
@@ -72,6 +72,7 @@ export default function ShowMore({
           </div>
         )
       )}
+      <LoadingList />
     </>
   );
 }

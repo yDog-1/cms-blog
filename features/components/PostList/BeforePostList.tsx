@@ -1,7 +1,4 @@
-import Link from "next/link";
 import React from "react";
-import { FaArrowCircleRight } from "react-icons/fa";
-import styles from "@/features/components/PostList/PostList.module.scss";
 import { Content } from "@/types/Content";
 import { MicroCMSQueries } from "microcms-js-sdk";
 import PostList from "./PostList";
@@ -12,11 +9,7 @@ type Props = {
   totalCount: number;
 };
 
-export default function ChildrenPostList({
-  contents,
-  queries,
-  totalCount,
-}: Props) {
+export default function ChildrenPostList({ contents }: Props) {
   if (!contents || contents.length === 0) {
     return;
   }
