@@ -22,6 +22,13 @@ export async function generateMetadata({
       title: post.title,
       description,
       url: `/${post.id}`,
+      images: [
+        {
+          url: "https://ydog-tech-blog.vercel.app/_next/image?url=%2Fimages%2FyDog.png&w=640&q=75",
+          width: 640,
+          height: 640,
+        },
+      ],
     },
     twitter: {
       title: post.title,
