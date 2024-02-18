@@ -2,6 +2,21 @@ import Github from "@/components/elements/logo/Github";
 import X from "@/components/elements/logo/X";
 import ContactList from "@/features/components/Contact/ContactList/ContactList";
 import { ContactList as ContactListType } from "@/types/ContactList";
+import { Metadata } from "next";
+import { url } from "@/app/layout";
+
+const description = "yDogの連絡先について説明します。";
+
+export const metadata: Metadata = {
+  description,
+  openGraph: {
+    description,
+    url: `${url}/contact`,
+  },
+  alternates: {
+    canonical: `${url}/contact`,
+  },
+};
 
 const logoList: ContactListType[] = [
   {
