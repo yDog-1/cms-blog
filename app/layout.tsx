@@ -13,14 +13,16 @@ const siteName = "yDog Tech Blog";
 const description = "フロントエンドエンジニアを目指すyDogのブログです。";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ydog-tech-blog.vercel.app/"),
   title: {
     template: `%s | ${siteName}`,
     default: siteName,
   },
   description,
   openGraph: {
-    title: siteName,
+    title: {
+      template: `%s | ${siteName}`,
+      default: siteName,
+    },
     description,
     url: "/",
     siteName: siteName,
@@ -29,7 +31,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteName,
+    title: {
+      template: `%s | ${siteName}`,
+      default: siteName,
+    },
     description,
     creator: "@yDog_1",
   },
