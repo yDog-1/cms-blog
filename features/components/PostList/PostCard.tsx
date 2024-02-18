@@ -6,8 +6,9 @@ export default function PostCard({
   id = "",
   title = "",
   localPublishedAt = "",
+  loading = false,
 }) {
-  return (
+  return !loading ? (
     <Link href={`/post/${id}`} className="group flex flex-1 flex-col">
       <h2 className="px-5 pb-10 pt-3 text-2xl font-bold group-hover:underline">
         {title}
@@ -21,5 +22,7 @@ export default function PostCard({
         />
       </div>
     </Link>
+  ) : (
+    <div className="h-[128px] w-full"></div>
   );
 }
