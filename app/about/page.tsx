@@ -1,4 +1,18 @@
+import { Metadata } from "next";
 import Image from "next/image";
+
+const description = "yDogとは誰なのかについて説明します。";
+
+export const metadata: Metadata = {
+  description,
+  openGraph: {
+    description,
+    url: "/about",
+  },
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 type History = {
   year: number;

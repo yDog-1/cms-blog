@@ -9,12 +9,33 @@ const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
 });
 
+const siteName = "yDog Tech Blog";
+const description = "フロントエンドエンジニアを目指すyDogのブログです。";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ydog-tech-blog.vercel.app/"),
   title: {
-    template: "%s | yDog Tech Blog",
-    default: "yDog Tech Blog",
+    template: `%s | ${siteName}`,
+    default: siteName,
   },
-  description: "フロントエンドエンジニアを目指すyDogのブログです。",
+  description,
+  openGraph: {
+    title: siteName,
+    description,
+    url: "/",
+    siteName: siteName,
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description,
+    creator: "@yDog_1",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
