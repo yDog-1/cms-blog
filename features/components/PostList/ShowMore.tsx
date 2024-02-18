@@ -66,13 +66,8 @@ export default function ShowMore({
           </button>
         </div>
       ) : (
-        loading && (
-          <div className="flex content-center justify-center py-5">
-            <Loading />
-          </div>
-        )
+        loading && <LoadingList />
       )}
-      <LoadingList />
     </>
   );
 }
