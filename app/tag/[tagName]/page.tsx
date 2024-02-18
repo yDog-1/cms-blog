@@ -11,6 +11,7 @@ export function generateMetadata({
   const description = `${siteName}の${tagName}タグのついたページ一覧です。`;
 
   return {
+    ...constantMetadata,
     title: `${tagName}ページ一覧`,
     description,
     openGraph: {
@@ -30,7 +31,6 @@ export function generateMetadata({
     alternates: {
       canonical: `/tag/${tagName}`,
     },
-    ...constantMetadata,
   };
 }
 

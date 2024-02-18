@@ -8,6 +8,7 @@ import { Metadata } from "next";
 const description = "yDogの連絡先について説明します。";
 
 export const metadata: Metadata = {
+  ...constantMetadata,
   description,
   openGraph: {
     description,
@@ -21,7 +22,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/contact",
   },
-  ...constantMetadata,
 };
 
 const logoList: ContactListType[] = [
