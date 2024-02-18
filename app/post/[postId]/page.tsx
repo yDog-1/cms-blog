@@ -1,6 +1,9 @@
 import Post from "@/features/components/Post/Post";
 import { getDetail, getList } from "@/libs/microcms";
+import constantMetadata from "@/app/constantMetadata";
 import { Metadata } from "next";
+
+const siteName = process.env.SITE_NAME!;
 
 // metadataを動的に適用
 export async function generateMetadata({
@@ -21,9 +24,9 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description,
-      url: `/${post.id}`,
+      url: `/post/${post.id}`,
       images: {
-        url: "https://ydog-tech-blog.vercel.app/opengraph-image.png?20960032827eedaf",
+        url: "/opengraph-image.png?20960032827eedaf",
         width: 640,
         height: 640,
       },
@@ -33,8 +36,9 @@ export async function generateMetadata({
       description,
     },
     alternates: {
-      canonical: `/${post.id}`,
+      canonical: `/post/${post.id}`,
     },
+    ...constantMetadata,
   };
 }
 
