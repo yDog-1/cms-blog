@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-const siteName = process.env.SITE_NAME!;
+const siteName = process.env.VERCEL_URL!;
 
 const constantMetadata: Metadata = {
   openGraph: {

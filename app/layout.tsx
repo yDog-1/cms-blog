@@ -10,7 +10,7 @@ const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
 });
 
-const siteName = process.env.SITE_NAME!;
+const siteName = process.env.VERCEL_URL!;
 const description = "フロントエンドエンジニアを目指すyDogのブログです。";
 
 export const metadata: Metadata = {
