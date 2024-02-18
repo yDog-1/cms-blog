@@ -1,42 +1,40 @@
 import Github from "@/components/elements/logo/Github";
 import X from "@/components/elements/logo/X";
-import Link from "next/link";
+import ContactList from "@/features/components/Contact/ContactList/ContactList";
+import { ContactList as ContactListType } from "@/types/ContactList";
+
+const logoList: ContactListType[] = [
+  {
+    href: "https://x.com/yDog_1",
+    id: "yDog_1",
+    logo: { SVG: X },
+  },
+  {
+    href: "https://github.com/yDog-1",
+    id: "yDog-1",
+    logo: { SVG: Github },
+  },
+];
 
 export default function Page() {
   return (
     <main className="flex">
-      <div className="my-10 flex-1">
-        <div className="mx-3 flex h-full flex-col items-center gap-2 text-2xl md:justify-center">
-          <ul>
-            <li className="flex gap-2">
-              <p>email</p>
-              <p>ydog-1@outlook.jp</p>
-            </li>
-            <li>
-              <div className="mt-3 flex gap-2">
-                <p>SNS</p>
-                <div className="mx-auto flex w-[100px] justify-between">
-                  <a
-                    href="https://github.com/yDog-1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block rounded-full "
-                  >
-                    <Github width={32} height={32} darkMode={true} />
-                  </a>
-                  <a
-                    href="https://x.com/yDog_1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block rounded-full "
-                  >
-                    <X width={32} height={32} darkMode={true} />
-                  </a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+      <div className="my-10 flex flex-1 flex-col items-center justify-center">
+        <ul className=" flex justify-center gap-16">
+          {logoList.map((prop) => {
+            return (
+              <ContactList
+                href={prop.href}
+                id={prop.id}
+                logo={prop.logo}
+                key={prop.href}
+              />
+            );
+          })}
+        </ul>
+        <a href="mailto:ydog-1@outlook.jp" className=" mt-10 text-2xl">
+          ydog-1@outlook.jp
+        </a>
       </div>
     </main>
   );
