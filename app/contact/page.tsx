@@ -2,8 +2,10 @@ import Github from "@/components/elements/logo/Github";
 import X from "@/components/elements/logo/X";
 import ContactList from "@/features/components/Contact/ContactList/ContactList";
 import { ContactList as ContactListType } from "@/types/ContactList";
+import constantMetadata from "@/app/constantMetadata";
 import { Metadata } from "next";
 
+const siteName = process.env.SITE_NAME!;
 const description = "yDogの連絡先について説明します。";
 
 export const metadata: Metadata = {
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     description,
     url: "/contact",
     images: {
-      url: "https://ydog-tech-blog.vercel.app/opengraph-image.png?20960032827eedaf",
+      url: "/opengraph-image.png?20960032827eedaf",
       width: 640,
       height: 640,
     },
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/contact",
   },
+  ...constantMetadata,
 };
 
 const logoList: ContactListType[] = [

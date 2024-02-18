@@ -3,13 +3,14 @@ import { Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.scss";
 import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
+import constantMetadata from "@/app/constantMetadata";
 
 const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: "400",
   subsets: ["latin"],
 });
 
-const siteName = "yDog Tech Blog";
+const siteName = process.env.SITE_NAME!;
 const description = "フロントエンドエンジニアを目指すyDogのブログです。";
 
 export const metadata: Metadata = {
@@ -20,22 +21,24 @@ export const metadata: Metadata = {
   },
   description,
   openGraph: {
-    title: siteName,
+    title: {
+      template: `%s | ${siteName}`,
+      default: siteName,
+    },
     description,
     url: "/",
-    siteName: siteName,
-    locale: "ja_JP",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: siteName,
+    title: {
+      template: `%s | ${siteName}`,
+      default: siteName,
+    },
     description,
-    creator: "@yDog_1",
   },
   alternates: {
     canonical: "/",
   },
+  ...constantMetadata,
 };
 
 export default function RootLayout({
