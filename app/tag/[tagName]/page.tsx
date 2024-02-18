@@ -8,7 +8,7 @@ export function generateMetadata({
 }: {
   params: { tagName: string };
 }): Metadata {
-  const description = `${process.env.SITE_NAME}の${tagName}タグのついたページ一覧です。`;
+  const description = `${process.env.VERCEL_URL}の${tagName}タグのついたページ一覧です。`;
 
   return {
     title: `${tagName}ページ一覧`,

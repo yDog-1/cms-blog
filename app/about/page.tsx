@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import constantMetadata from "@/app/constantMetadata";
 import Image from "next/image";
 
-const siteName = process.env.SITE_NAME!;
+const siteName = process.env.VERCEL_URL!;
 const description = "yDogとは誰なのかについて説明します。";
 
 export const metadata: Metadata = {
