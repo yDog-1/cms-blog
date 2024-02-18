@@ -17,6 +17,7 @@ export async function generateMetadata({
   const description = post.body.replace(reg, " ").replace(/ +/g, " ");
 
   return {
+    ...constantMetadata,
     title: post.title,
     description,
     openGraph: {
@@ -36,7 +37,6 @@ export async function generateMetadata({
     alternates: {
       canonical: `/post/${post.id}`,
     },
-    ...constantMetadata,
   };
 }
 

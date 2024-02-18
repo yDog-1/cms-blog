@@ -5,6 +5,7 @@ import Image from "next/image";
 const description = "yDogとは誰なのかについて説明します。";
 
 export const metadata: Metadata = {
+  ...constantMetadata,
   description,
   openGraph: {
     description,
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/about",
   },
-  ...constantMetadata,
 };
 
 type History = {

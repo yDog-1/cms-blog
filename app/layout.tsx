@@ -13,7 +13,8 @@ const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
 const description = "フロントエンドエンジニアを目指すyDogのブログです。";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ydog-tech-blog.vercel.app/"),
+  metadataBase: new URL("https://ydog-tech-blog.vercel.app"),
+  ...constantMetadata,
   title: {
     template: `%s | ${siteName}`,
     default: siteName,
@@ -37,7 +38,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  ...constantMetadata,
 };
 
 export default function RootLayout({
