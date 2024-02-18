@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description,
     url: "/contact",
     images: {
-      url: "/opengraph-image.png?20960032827eedaf",
+      url: "/opengraph-image.png?862c688aad63163e",
       width: 640,
       height: 640,
     },
