@@ -1,3 +1,4 @@
+import { siteName, url } from "@/app/layout";
 import Post from "@/features/components/Post/Post";
 import { getDetail, getList } from "@/libs/microcms";
 import { Metadata } from "next";
@@ -19,10 +20,20 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: description,
-    // openGraph: {
-    //   images: ['/some-specific-page-image.jpg', ...previousImages],
-    // },
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+      url: `${url}/${post.id}`,
+      siteName: siteName,
+    },
+    twitter: {
+      title: post.title,
+      description,
+    },
+    alternates: {
+      canonical: `${url}/${post.id}`,
+    },
   };
 }
 
