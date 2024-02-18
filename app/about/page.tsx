@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { url } from "@/app/layout";
 
 const description = "yDogとは誰なのかについて説明します。";
 
@@ -8,10 +7,10 @@ export const metadata: Metadata = {
   description,
   openGraph: {
     description,
-    url: `${url}/about`,
+    url: "/about",
   },
   alternates: {
-    canonical: `${url}/about`,
+    canonical: "/about",
   },
 };
 

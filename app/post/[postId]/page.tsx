@@ -1,4 +1,3 @@
-import { siteName, url } from "@/app/layout";
 import Post from "@/features/components/Post/Post";
 import { getDetail, getList } from "@/libs/microcms";
 import { Metadata } from "next";
@@ -13,10 +12,8 @@ export async function generateMetadata({
   const post = await getDetail(postId);
   const reg = /<("[^"]*"|'[^']*'|[^'">])*>/g;
   // bodyからhtml要素を取り除いて、スペースに、連続したスペースを1つにする
-  const description = post.body.replace(reg, " ").replace(/ +/g, " ");
 
-  // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
+  const description = post.body.replace(reg, " ").replace(/ +/g, " ");
 
   return {
     title: post.title,
@@ -24,15 +21,14 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description,
-      url: `${url}/${post.id}`,
-      siteName: siteName,
+      url: `/${post.id}`,
     },
     twitter: {
       title: post.title,
       description,
     },
     alternates: {
-      canonical: `${url}/${post.id}`,
+      canonical: `/${post.id}`,
     },
   };
 }

@@ -9,14 +9,11 @@ const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
 });
 
-export const [url, siteName] = [
-  "https://ydog-tech-blog.vercel.app/",
-  "yDog Tech Blog",
-];
-
+const siteName = "yDog Tech Blog";
 const description = "フロントエンドエンジニアを目指すyDogのブログです。";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ydog-tech-blog.vercel.app/"),
   title: {
     template: `%s | ${siteName}`,
     default: siteName,
@@ -25,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteName,
     description,
-    url,
+    url: "/",
     siteName: siteName,
     locale: "ja_JP",
     type: "website",
@@ -37,7 +34,7 @@ export const metadata: Metadata = {
     creator: "@yDog_1",
   },
   alternates: {
-    canonical: url,
+    canonical: "/",
   },
 };
 
