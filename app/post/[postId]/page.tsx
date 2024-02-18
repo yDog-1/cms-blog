@@ -3,8 +3,6 @@ import { getDetail, getList } from "@/libs/microcms";
 import constantMetadata from "@/app/constantMetadata";
 import { Metadata } from "next";
 
-const siteName = process.env.SITE_NAME!;
-
 // metadataを動的に適用
 export async function generateMetadata({
   params: { postId },

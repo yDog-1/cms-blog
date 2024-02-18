@@ -1,6 +1,6 @@
 import TagPage from "@/features/components/TagPageList/TagPageList";
 import { Tag } from "@/types/Tag";
-import constantMetadata from "@/app/constantMetadata";
+import constantMetadata, { siteName } from "@/app/constantMetadata";
 import { Metadata } from "next";
 
 export function generateMetadata({
@@ -8,7 +8,7 @@ export function generateMetadata({
 }: {
   params: { tagName: string };
 }): Metadata {
-  const description = `${process.env.VERCEL_URL}の${tagName}タグのついたページ一覧です。`;
+  const description = `${siteName}の${tagName}タグのついたページ一覧です。`;
 
   return {
     title: `${tagName}ページ一覧`,

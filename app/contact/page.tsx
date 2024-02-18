@@ -5,7 +5,6 @@ import { ContactList as ContactListType } from "@/types/ContactList";
 import constantMetadata from "@/app/constantMetadata";
 import { Metadata } from "next";
 
-const siteName = process.env.VERCEL_URL!;
 const description = "yDogの連絡先について説明します。";
 
 export const metadata: Metadata = {

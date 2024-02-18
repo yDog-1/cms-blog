@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-const siteName = process.env.VERCEL_URL!;
+export const siteName = "yDog Tech Blog";
 
 const constantMetadata: Metadata = {
   openGraph: {

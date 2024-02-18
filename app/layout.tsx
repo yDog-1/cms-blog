@@ -3,14 +3,13 @@ import { Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.scss";
 import { Header } from "@/components/layouts/Header";
 import { Footer } from "@/components/layouts/Footer";
-import constantMetadata from "@/app/constantMetadata";
+import constantMetadata, { siteName } from "@/app/constantMetadata";
 
 const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: "400",
   subsets: ["latin"],
 });
 
-const siteName = process.env.VERCEL_URL!;
 const description = "フロントエンドエンジニアを目指すyDogのブログです。";
 
 export const metadata: Metadata = {
