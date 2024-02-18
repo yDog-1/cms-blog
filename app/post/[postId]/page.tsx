@@ -23,7 +23,7 @@ export async function generateMetadata({
       description,
       url: `/${post.id}`,
       images: {
-        url: "https://ydog-tech-blog.vercel.app/_next/image?url=%2Fimages%2FyDog.png&w=640&q=75",
+        url: "https://ydog-tech-blog.vercel.app/opengraph-image.png?20960032827eedaf",
         width: 640,
         height: 640,
       },

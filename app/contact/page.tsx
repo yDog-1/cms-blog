@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   openGraph: {
     description,
     url: "/contact",
+    images: {
+      url: "https://ydog-tech-blog.vercel.app/opengraph-image.png?20960032827eedaf",
+      width: 640,
+      height: 640,
+    },
   },
   alternates: {
     canonical: "/contact",
