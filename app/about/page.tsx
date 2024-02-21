@@ -1,25 +1,11 @@
-import { Metadata } from "next";
-import constantMetadata from "@/app/constantMetadata";
 import Image from "next/image";
+import { getBasicMetadata } from "@/app/metadata";
 
-const description = "yDogとは誰なのかについて説明します。";
-
-export const metadata: Metadata = {
-  ...constantMetadata,
-  description,
-  openGraph: {
-    description,
-    url: "/about",
-    images: {
-      url: "/opengraph-image.png?862c688aad63163e",
-      width: 640,
-      height: 640,
-    },
-  },
-  alternates: {
-    canonical: "/about",
-  },
-};
+export const metadata = getBasicMetadata({
+  title: "About",
+  description: "yDogとは誰なのかについて説明します。",
+  path: "/about",
+});
 
 type History = {
   year: number;
