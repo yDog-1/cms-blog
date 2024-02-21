@@ -9,8 +9,8 @@ const ZenKakuGothicNew = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
 });
 
-const url = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+const url = process.env.VERCEL_URL
+  ? `https://ydog-tech-blog.vercel.app/`
   : "http://localhost:3000";
 
 export const metadata = {
