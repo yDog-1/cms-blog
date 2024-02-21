@@ -1,7 +1,7 @@
 import Post from "@/features/components/Post/Post";
 import { getDetail, getList } from "@/libs/microcms";
-import constantMetadata from "@/app/constantMetadata";
 import { Metadata } from "next";
+import { getBasicMetadata } from "@/app/metadata";
 
 // metadataを動的に適用
 export async function generateMetadata({
@@ -16,28 +16,11 @@ export async function generateMetadata({
 
   const description = post.body.replace(reg, " ").replace(/ +/g, " ");
 
-  return {
-    ...constantMetadata,
+  return getBasicMetadata({
     title: post.title,
     description,
-    openGraph: {
-      title: post.title,
-      description,
-      url: `/post/${post.id}`,
-      images: {
-        url: "/opengraph-image.png?862c688aad63163e",
-        width: 640,
-        height: 640,
-      },
-    },
-    twitter: {
-      title: post.title,
-      description,
-    },
-    alternates: {
-      canonical: `/post/${post.id}`,
-    },
-  };
+    path: `/post/${post.id}`,
+  });
 }
 
 // 動的ルーティングを静的に生成

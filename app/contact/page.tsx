@@ -2,27 +2,16 @@ import Github from "@/components/elements/logo/Github";
 import X from "@/components/elements/logo/X";
 import ContactList from "@/features/components/Contact/ContactList/ContactList";
 import { ContactList as ContactListType } from "@/types/ContactList";
-import constantMetadata from "@/app/constantMetadata";
 import { Metadata } from "next";
+import { getBasicMetadata } from "@/app/metadata";
 
-const description = "yDogの連絡先について説明します。";
+const description = "yDogの連絡先";
 
-export const metadata: Metadata = {
-  ...constantMetadata,
+export const metadata: Metadata = getBasicMetadata({
+  title: "Contact",
   description,
-  openGraph: {
-    description,
-    url: "/contact",
-    images: {
-      url: "/opengraph-image.png?862c688aad63163e",
-      width: 640,
-      height: 640,
-    },
-  },
-  alternates: {
-    canonical: "/contact",
-  },
-};
+  path: "/contact",
+});
 
 const logoList: ContactListType[] = [
   {
