@@ -1,14 +1,14 @@
 import { Tag } from "@/types/Tag";
 
 export class TagColor {
-  readonly blackText: boolean;
+  readonly isBlackText: boolean;
   readonly hsl: string;
 
   constructor(
     readonly tag: Tag,
     private color: [Hue: number, Saturation: number, Lightness: number]
   ) {
-    this.blackText = this.isBlack();
+    this.isBlackText = this.isBlack();
     this.hsl = `hsl(${this.color[0]} ${this.color[1]}% ${this.color[2]}%)`;
   }
 
