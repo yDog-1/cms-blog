@@ -13,7 +13,7 @@ export class TagColor {
   }
 
   private isBlack(): boolean {
-    return this.color[2] > 50 ? true : false;
+    return this.color[2] > 60 ? true : false;
   }
 }
 
@@ -25,5 +25,5 @@ export const tagColors = [
   new TagColor("Tailwind CSS", [199, 89, 48]),
   new TagColor("SCSS", [292, 91, 73]),
   new TagColor("Notion", [222, 47, 11]),
-  new TagColor("その他", [0, 0, 50]),
+  new TagColor("その他", [0, 0, 30]),
 ];
