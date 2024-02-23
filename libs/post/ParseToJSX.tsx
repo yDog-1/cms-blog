@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./ParseToJSX.module.scss";
 import HighlightCode from "./highlightjs/HighlightCode";
+import { v4 as uuidv4 } from "uuid";
 
 const isElement = (element: unknown): element is Element =>
   element instanceof Element;
@@ -73,7 +74,7 @@ export default function parseToJSX(rawHtml: string) {
               if (liIndex > 5) liIndex = 0;
               liIndex += 1;
               return (
-                <li key={data} className={styles[`ul-li-${liIndex}`]}>
+                <li key={uuidv4()} className={styles[`ul-li-${liIndex}`]}>
                   {data}
                 </li>
               );
@@ -95,7 +96,7 @@ export default function parseToJSX(rawHtml: string) {
               if (liIndex > 5) liIndex = 0;
               liIndex += 1;
               return (
-                <li key={data} className={styles[`ol-li-${liIndex}`]}>
+                <li key={uuidv4()} className={styles[`ol-li-${liIndex}`]}>
                   {data}
                 </li>
               );
