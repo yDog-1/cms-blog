@@ -7,3 +7,5 @@ export type Tag =
   | "scss"
   | "Notion"
   | "その他";
+
+export type TagColor = Record<Tag, { bgColor: string; blackText: boolean }>;
