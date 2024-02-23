@@ -2,28 +2,28 @@ import { Tag } from "@/types/Tag";
 
 export class TagColor {
   readonly blackText: boolean;
+  readonly hsl: string;
 
-  constructor(readonly tag: Tag, readonly color: string) {
+  constructor(
+    readonly tag: Tag,
+    private color: [Hue: number, Saturation: number, Lightness: number]
+  ) {
     this.blackText = this.isBlack();
+    this.hsl = `hsl(${this.color[0]} ${this.color[1]}% ${this.color[2]}%)`;
   }
 
   private isBlack(): boolean {
-    // RGBの加重平均による明度の計算
-    const brightness =
-      parseInt(this.color.substr(0, 2), 16) * 0.299 + // Red
-      parseInt(this.color.substr(2, 2), 16) * 0.587 + // Green
-      parseInt(this.color.substr(4, 2), 16) * 0.114; // Blue
-    return brightness > 128 ? true : false;
+    return this.color[2] > 50 ? true : false;
   }
 }
 
 export const tagColors = [
-  new TagColor("Next.js", "#1e293b"),
-  new TagColor("JavaScript", "#eab308"),
-  new TagColor("TypeScript", "#3b82f6"),
-  new TagColor("microCMS", "#334155"),
-  new TagColor("Tailwind CSS", "#0ea5e9"),
-  new TagColor("SCSS", "#e879f9"),
-  new TagColor("Notion", "#0f172a"),
-  new TagColor("その他", "#5b5b5b"),
+  new TagColor("Next.js", [217, 33, 17]),
+  new TagColor("JavaScript", [45, 93, 47]),
+  new TagColor("TypeScript", [217, 91, 60]),
+  new TagColor("microCMS", [215, 25, 27]),
+  new TagColor("Tailwind CSS", [199, 89, 48]),
+  new TagColor("SCSS", [292, 91, 73]),
+  new TagColor("Notion", [222, 47, 11]),
+  new TagColor("その他", [0, 0, 50]),
 ];
