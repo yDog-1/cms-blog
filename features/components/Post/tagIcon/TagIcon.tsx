@@ -1,6 +1,6 @@
 import { Tag } from "@/types/Tag";
 import Link from "next/link";
-import StyleTag from "../../../../components/elements/tag/StyleTag";
+import StyleTag from "@/components/elements/tag/StyleTag";
 
 type Props = {
   tag: Tag;
