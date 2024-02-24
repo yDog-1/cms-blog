@@ -4,28 +4,46 @@ import Image from "next/image";
 import styles from "./ParseToJSX.module.scss";
 import HighlightCode from "./highlightjs/HighlightCode";
 import { v4 as uuidv4 } from "uuid";
+import Iframely from "./script/Iframely";
+import Twitter from "./script/Twitter";
 
 const isElement = (element: unknown): element is Element =>
   element instanceof Element;
 const isText = (text: unknown): text is Text => text instanceof Text;
 
-let liIndex = 0; //ページ全体のliのカウント用
-
-export default function parseToJSX(rawHtml: string) {
+export default function parseToJSX(rawHtml: string, liIndex: number = 0) {
   return parse(rawHtml, {
     replace: (domNode) => {
       // aタグの処理
       if (domNode instanceof Element && domNode.name === "a") {
-        // 同一ドメインじゃない
-        if (domNode.attribs.href.indexOf("http") !== -1) {
-          return;
-        }
-        // それ以外はLinkタグに置き換える。
         const children = domNode.children.filter(
           // childrenの型をElement | Textとする
           (node): node is Element | Text => isElement(node) || isText(node)
         );
-        return <Link href={domNode.attribs.href}>{domToReact(children)}</Link>;
+        // 同一ドメインじゃない
+        if (domNode.attribs.href.indexOf("http") !== -1) {
+          const target = domNode.attribs?.target;
+          const rel = domNode.attribs?.rel;
+          return (
+            <a
+              href={domNode.attribs.href}
+              target={target}
+              rel={rel}
+              className="text-blue-500 hover:underline"
+            >
+              {domToReact(children)}
+            </a>
+          );
+        }
+        // それ以外はLinkタグに置き換える。
+        return (
+          <Link
+            href={domNode.attribs.href}
+            className="text-blue-500 hover:underline"
+          >
+            {domToReact(children)}
+          </Link>
+        );
       }
       // コードブロックの処理
       if (
@@ -103,6 +121,45 @@ export default function parseToJSX(rawHtml: string) {
             })}
           </ol>
         );
+      }
+      // Iframely処理
+      if (
+        domNode instanceof Element &&
+        domNode.name === "div" &&
+        domNode.attribs.class === "iframely-embed"
+      ) {
+        if (!isElement(domNode.firstChild)) return;
+        const responsive = domNode.firstChild;
+        if (!isElement(responsive.firstChild)) return;
+        const a = responsive.firstChild;
+        return (
+          <>
+            {domToReact([a])}
+            <Iframely />
+          </>
+        );
+      }
+      // Twitter処理
+      if (
+        domNode instanceof Element &&
+        domNode.name === "blockquote" &&
+        domNode.attribs.class === "twitter-tweet"
+      ) {
+        return (
+          <>
+            {domToReact([domNode])}
+            <Twitter />
+          </>
+        );
+      }
+      // scriptがあるとhydrationエラーが起きてしまうため削除
+      if (
+        domNode instanceof Element &&
+        domNode.name === "script" &&
+        (domNode.attribs.src === "//cdn.iframe.ly/embed.js" ||
+          domNode.attribs.src === "https://platform.twitter.com/widgets.js")
+      ) {
+        return <></>;
       }
     },
   });
