@@ -53,7 +53,7 @@ export default function parseToJSX(rawHtml: string, liIndex: number = 0) {
       ) {
         if (!isText(domNode.firstChild)) return;
         return (
-          <code className="rounded bg-gray-200 px-1 font-mono">
+          <code className="rounded bg-slate-200 px-1 font-mono">
             {domNode.firstChild.data}
           </code>
         );
