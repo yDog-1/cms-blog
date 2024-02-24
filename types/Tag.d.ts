@@ -1,9 +1,9 @@
 export type Tag =
   | "Next.js"
-  | "Javascript"
-  | "Typescript"
+  | "JavaScript"
+  | "TypeScript"
   | "microCMS"
-  | "tailwindcss"
-  | "scss"
+  | "Tailwind CSS"
+  | "SCSS"
   | "Notion"
   | "その他";
