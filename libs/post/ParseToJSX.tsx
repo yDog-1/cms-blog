@@ -122,6 +122,29 @@ export default function parseToJSX(rawHtml: string, liIndex: number = 0) {
           </ol>
         );
       }
+      // 引用処理
+      if (
+        domNode instanceof Element &&
+        domNode.name === "blockquote" &&
+        domNode.attribs.class === undefined
+      ) {
+        const textChildren = domNode.children.map((child) => {
+          if (!isElement(child)) return;
+          if (!isText(child.firstChild)) return;
+          return child.firstChild;
+        });
+        return (
+          <blockquote
+            className={`relative border-l-2 border-slate-500 bg-slate-100 before:absolute before:font-mono before:text-4xl before:text-slate-500 before:content-['"'] `}
+          >
+            {textChildren.map((child) => (
+              <p key={uuidv4()} className="py-4 pl-5">
+                {child?.data}
+              </p>
+            ))}
+          </blockquote>
+        );
+      }
       // Iframely処理
       if (
         domNode instanceof Element &&
