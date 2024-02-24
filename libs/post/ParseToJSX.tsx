@@ -45,6 +45,19 @@ export default function parseToJSX(rawHtml: string, liIndex: number = 0) {
           </Link>
         );
       }
+      // code処理
+      if (
+        domNode instanceof Element &&
+        domNode.name === "code" &&
+        domNode.attribs.class === undefined
+      ) {
+        if (!isText(domNode.firstChild)) return;
+        return (
+          <code className="rounded bg-gray-200 px-1 font-mono">
+            {domNode.firstChild.data}
+          </code>
+        );
+      }
       // コードブロックの処理
       if (
         domNode instanceof Element &&
