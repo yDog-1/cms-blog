@@ -12,7 +12,7 @@ export default function Post({ post }: Props) {
   return (
     <>
       <span className={styles.head}>
-        <div>
+        <div className="*:m-3">
           <p>{post.localPublishedAt}</p>
           <h1>{post.title}</h1>
           <TagIcons tags={post.tags} />
