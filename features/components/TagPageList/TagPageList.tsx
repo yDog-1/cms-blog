@@ -21,7 +21,7 @@ export default function TagPageList({ tagName }: Props) {
     <>
       <div>
         <div className="mx-3 flex flex-col items-center md:flex-row">
-          <div className="my-8 ml-5 flex w-fit drop-shadow-xl *:rounded-md *:px-6 *:pb-3">
+          <div className="my-8 flex w-fit drop-shadow-xl *:rounded-md *:px-6 *:pb-3 md:ml-5">
             <StyleTag tagName={fixedTagName}>
               <h1 className="text-5xl">{fixedTagName}</h1>
             </StyleTag>
