@@ -17,6 +17,7 @@ export class TagColor {
   }
 }
 
+// HSLカラーピッカーサイト "https://www.oh-benri-tools.com/tools/color/hsl-hsv-color-picker"
 export const tagColors = [
   new TagColor("Next.js", [217, 33, 17]),
   new TagColor("JavaScript", [45, 93, 47]),
@@ -25,5 +26,7 @@ export const tagColors = [
   new TagColor("Tailwind CSS", [199, 89, 48]),
   new TagColor("SCSS", [292, 91, 73]),
   new TagColor("Notion", [222, 47, 11]),
+  new TagColor("ポエム", [97, 85, 74]),
+  new TagColor("感想", [312, 50, 83]),
   new TagColor("その他", [0, 0, 30]),
 ];

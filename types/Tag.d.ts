@@ -6,4 +6,6 @@ export type Tag =
   | "Tailwind CSS"
   | "SCSS"
   | "Notion"
+  | "ポエム"
+  | "感想"
   | "その他";
