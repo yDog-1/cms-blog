@@ -1,4 +1,3 @@
-"use client";
 import { notFound } from "next/navigation";
 import { tagColors } from "./tagColors";
 
@@ -16,15 +15,12 @@ export default function StyleTag({
   if (tag === undefined) return notFound();
   const textColor = tag.isBlackText ? blackText : whiteText;
   return (
-    <div className="*:m-0">
-      <style jsx>
-        {`
-          div {
-            background-color: ${tag.hsl};
-            color: ${textColor};
-          }
-        `}
-      </style>
+    <div
+      style={{
+        backgroundColor: `${tag.hsl}`,
+        color: `${textColor}`,
+      }}
+    >
       {children}
     </div>
   );
