@@ -11,7 +11,9 @@ export default function TagIcon({ tag }: Props) {
   return (
     <li key={tag} className="drop-shadow-lg *:rounded-md">
       <StyleTag tagName={language}>
-        <Link href={`/tag/${language}`}>{tag}</Link>
+        <Link className="p-2" href={`/tag/${language}`}>
+          {tag}
+        </Link>
       </StyleTag>
     </li>
   );
