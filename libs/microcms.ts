@@ -24,13 +24,15 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export async function getList(
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
+  customRequestInit: CustomRequestInit = { cache: "no-store" }
 ): Promise<{ contents: Content[]; totalCount: number }> {
   try {
     const { contents, totalCount } = await client
       .getList<Blog>({
         endpoint: "blog",
         queries: { limit: 10, ...queries },
+        customRequestInit: customRequestInit,
       })
       .then((data) => {
         return {
@@ -52,7 +54,7 @@ export async function getList(
 export async function getDetail(
   contentId: string,
   queries?: MicroCMSQueries,
-  customRequestInit?: CustomRequestInit
+  customRequestInit: CustomRequestInit = { cache: "no-store" }
 ): Promise<Content> {
   try {
     const detailData = await client
