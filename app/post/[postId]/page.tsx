@@ -42,9 +42,5 @@ export default async function Page({
   params: { postId: string };
 }) {
   const post = await getDetail(postId);
-  return (
-    <main className=" flex flex-col items-center bg-white ">
-      <Post post={post} />
-    </main>
-  );
+  return <Post post={post} />;
 }

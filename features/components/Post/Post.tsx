@@ -11,16 +11,18 @@ export default function Post({ post }: Props) {
   const parsedBody = parseToJSX(post.body);
   return (
     <>
-      <span className={styles.head}>
+      <div className={styles.head}>
         <div className="*:m-3">
           <p>{post.localPublishedAt}</p>
           <h1>{post.title}</h1>
           <TagIcons tags={post.tags} />
         </div>
-      </span>
-      <div>
-        <div className={styles.post}>{parsedBody}</div>
       </div>
+      <main className=" flex flex-col items-center bg-white ">
+        <div>
+          <div className={styles.post}>{parsedBody}</div>
+        </div>
+      </main>
     </>
   );
 }
